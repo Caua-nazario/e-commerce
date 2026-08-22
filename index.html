@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-commerce</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css" />
+
+
+    <i class="bi bi-cart2"></i>
+    <i class="bi bi-person-fill"></i>
     <!-- Favicon será adicionado aqui futuramente -->
 </head>
 
@@ -21,13 +30,28 @@
         - observação: o header será estilizado futuramente com CSS e esse nome no h1 é apenas temporario,
         adicionado apenas para teste de visualização do header.
         -->
-        <nav>
+        <nav class="navbar bg-dark bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Loja Paraíba</a>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+
             <ul>
                 <li><a href="#">Início</a></li>
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Carrinho</a></li>
+                <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                        </svg>login</a></li>
+                <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                        </svg>carrinho</a></li>
             </ul>
             <!--
             NAV = área de navegação:
@@ -72,7 +96,9 @@
 
                 <h3>iPhone 13 Pro Max</h3>
 
-                <p>O iPhone 13 Pro Max é o smartphone mais avançado da Apple nessa faixa de preço, com uma tela Super Retina XDR de 6,7 polegadas, câmera tripla com recursos avançados de fotografia e vídeo, e desempenho excepcional graças ao chip A15 Bionic.</p>
+                <p>O iPhone 13 Pro Max é o smartphone mais avançado da Apple nessa faixa de preço, com uma tela Super
+                    Retina XDR de 6,7 polegadas, câmera tripla com recursos avançados de fotografia e vídeo, e
+                    desempenho excepcional graças ao chip A15 Bionic.</p>
 
                 <p>Preço: R$ 2.900,00</p>
 
@@ -89,6 +115,17 @@
     <footer>
         <!-- footer e o rodapé da página -->
     </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
