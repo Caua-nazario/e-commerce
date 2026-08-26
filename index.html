@@ -8,9 +8,6 @@
 
     <link rel="stylesheet" href="style.css" />
 
-
-    <i class="bi bi-cart2"></i>
-    <i class="bi bi-person-fill"></i>
     <!-- Favicon será adicionado aqui futuramente -->
 </head>
 
@@ -59,29 +56,35 @@
         </nav>
     </header>
     <main>
-        <section>
-            <img src="img/carrosel/banner_promocao.png" alt="Banner de promoção">
-            <article>
+        <section id="carrossel">
+            <article class="slide">
+                <img src="img/carrosel/banner_promocao.png" alt="Banner de promoção">
+            </article>
+            <article class="slide">
                 <!--produto em promocao 1-->
             </article>
 
-            <article>
+            <article class="slide">
                 <!--produto em promocao 2-->
             </article>
 
-            <article>
+            <article class="slide">
                 <!--produto em promocao 3-->
             </article>
 
-            <article>
+            <article class="slide">
                 <!--produto em promocao 4-->
             </article>
 
-            <article>
+            <article class="slide">
                 <!--produto em promocao 5-->
             </article>
-        </section>
 
+            <button id="btn-anterior">&#8592;</button>
+            <button id="btn-proximo">&#8594;</button>
+            <!--botões de navegação do carrossel, com setas para esquerda e direita-->
+
+        </section>
         <section>
             <h2>Produtos em destaque</h2>
 
