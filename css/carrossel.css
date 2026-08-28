@@ -1,9 +1,10 @@
 /* Parte 1: O tamanho do espaço na tela */
 #carousel {
   width: 100%;
-  height: 450px;
+  height: clamp(260px, 38vw, 420px);
   position: relative;
   overflow: hidden; /* Ajuste: impede que imagens/elementos passem do tamanho */
+  border-radius: 14px;
 }
 
 /* Parte 2: A regra para esconder todos os slides */
@@ -11,6 +12,7 @@
   display: none;
   width: 100%;  /* Ajuste: faz o slide ocupar toda a largura do carrossel */
   height: 100%; /* Ajuste: faz o slide ocupar toda a altura de 450px */
+  
 }
 
 /* Parte 3: A regra para mostrar só o slide com a classe ativo */
