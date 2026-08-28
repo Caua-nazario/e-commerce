@@ -13,7 +13,8 @@ body{
 /* Header */
 
 header{
-    background: #ffffff;
+    background: #111827;
+    color: #ffffff;
     border-bottom: 1px solid #e8e8e8;
     position: sticky;
     top: 0;
@@ -36,11 +37,11 @@ header{
 .logo{
     font-size: 25px;
     font-weight: 800;
-    color: #3394c5
+    color: white;
 }
 
 .logo span{
-    color:black;
+    color: #3394c5;
 }
 
 .search{
@@ -112,4 +113,33 @@ header{
     align-items: center;
     justify-content: center;
 
+}
+
+/* Navbar Styles */
+
+.nav{
+    background: #1f2937;
+}
+
+
+nav ul {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 40px;
+    padding: 14px;
+}
+
+li{
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
 }
