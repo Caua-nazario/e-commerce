@@ -76,6 +76,7 @@ header{
     height: 38px;
     border-radius: 9px;
     cursor: pointer;
+    }
 
 .header-actions{
     display: flex;
