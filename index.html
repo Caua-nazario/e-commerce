@@ -11,32 +11,14 @@
 
     <link rel="stylesheet" href="css/carrossel.css">
 
-    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/banner.css">
 
 
     <!-- Favicon será adicionado aqui futuramente -->
 </head>
   
   <!---->
-<body data-theme="blue">
-    <div class="trace-layer" aria-hidden="true">
-        <svg viewBox="0 0 1240 3200" preserveAspectRatio="none">
-            <path class="trace-path" d="M 60 0 L 60 420 L 140 500 L 140 900 L 40 980
-            L 40 1500 L 160 1600 L 160 2100 L 60 2200 L 60 2700 L 140 2800 L 140 3200">
-            </path>
-            <path class="trace-path" d="M 1180 0 L 1180 300 L 1100 300 L 1100 850 L 1200 940
-            L 1200 1450 L 1080 1550 L 1080 2050 L 1180 2150 L 1180 2650 L 1100 2750 L 1100 3200">
-        </path>
-        <circle class="trace-pad" cx="60" cy="420" r="4"></circle>
-        <circle class="trace-pad" cx="140" cy="900" r="4"></circle>
-        <circle class="trace-pad" cx="40" cy="1500" r="4"></circle>
-        <circle class="trace-pad" cx="160" cy="2100" r="4"></circle>
-        <circle class="trace-pad" cx="1180" cy="300" r="4"></circle>
-        <circle class="trace-pad" cx="1100" cy="850" r="4"></circle>
-        <circle class="trace-pad" cx="1200" cy="1450" r="4"></circle>
-        <circle class="trace-pad" cx="1080" cy="2050" r="4"></circle>
-        </svg>
-    </div>
+<body>
     <!--Cabeçalho-->
     <header>
         <div class="header">
@@ -146,6 +128,20 @@
             <!-- Botões de navegação com IDs em inglês conforme o seu CSS -->
             <button id="btn-before">&#8592;</button>
             <button id="btn-after">&#8594;</button>
+        </section>
+
+        <!--Banners de equipamentos-->
+
+        <section class="banner-section wrap">
+            <div class="banner" id="banner" role="region" aria-roledescription="Banner de equipamentos" aria-label="Banners de 
+            Ofertas em equipamentos eletrônicos">
+                <div class="banner-track" id="banner-track" style="transform: translateX(0%);">
+                    <div class="banner-slide">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1600&q=85"
+                         alt="Até 30% off em fones Bluetooth" loading="lazy">
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Seção de produtos em destaque -->
