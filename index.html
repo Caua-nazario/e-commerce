@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="css/categorias.css">
 
+    <link rel="stylesheet" href="css/produtos.css">
+
 
     <!-- Favicon será adicionado aqui futuramente -->
 </head>
@@ -140,7 +142,7 @@
             <div class="categories">
                 <div class="category">
                     <div class="category-icon">💻</div>
-                    <span>Informática</span>
+                    <span>Notebooks</span>
                 </div>
                 <div class="category">
                     <div class="category-icon">📱</div>
@@ -166,22 +168,23 @@
         </section>
 
         <!-- Seção de produtos em destaque -->
-        <section>
-            <h2>Produtos em destaque</h2>
+        <section class="section" id="productsSection">
+            <div class="section-header">
+                <div>
+                    <h2>Produtos em destaque</h2>
+                </div>
+                <a href="#">Ver todos →</a>
+            </div>
 
-            <article>
-                <img src="img/iphone-13-max/iphone-13-pro-max-1920x700.png" alt="Imagem do iPhone 13 Pro Max">
-
-                <h3>iPhone 13 Pro Max</h3>
-
-                <p>O iPhone 13 Pro Max é o smartphone mais avançado da Apple nessa faixa de preço, com uma tela Super
-                    Retina XDR de 6,7 polegadas, câmera tripla com recursos avançados de fotografia e vídeo, e
-                    desempenho excepcional graças ao chip A15 Bionic.</p>
-
-                <p>Preço: R$ 2.900,00</p>
-
-                <button>Comprar</button>
-            </article>
+            <div class="products" id="products">
+                <div class="products" data-name="Iphone 13 Pro Max">
+                    <div class="products-image">
+                        <img src="./img/iphone-13-max/iphone-13-pro-max-1920x700.png">
+                        <span class="discount">-20%</span>
+                        <button class="favorite-btn">🤍</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 

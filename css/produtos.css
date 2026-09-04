@@ -1,0 +1,38 @@
+.section{
+    max-width: 1250px;
+    margin: 55px auto;
+    padding: 0 20px;
+}
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2{
+    font-size: 27px;
+}
+
+.section-header a{
+    color: #3394c5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Produtos */
+
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+
