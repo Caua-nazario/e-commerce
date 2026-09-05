@@ -6,20 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-commerce</title>
 
-
     <link rel="stylesheet" href="css/navbar.css">
-
     <link rel="stylesheet" href="css/carrossel.css">
-
     <link rel="stylesheet" href="css/categorias.css">
-
     <link rel="stylesheet" href="css/produtos.css">
-
 
     <!-- Favicon será adicionado aqui futuramente -->
 </head>
-  
-  <!---->
+
 <body>
     <!--Cabeçalho-->
     <header>
@@ -59,27 +53,13 @@
         <!-- Navegação -->
         <nav class="primary">
             <ul id="Menu">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#celulares">Celulares</a>
-                </li>
-                <li>
-                    <a href="#notebooks">Notebooks</a>
-                </li>
-                <li>
-                    <a href="#games">Games</a>
-                </li>
-                <li>
-                    <a href="#audio">Áudio</a>
-                </li>
-                <li>
-                    <a href="#ofertas">Ofertas</a>
-                </li>
-                <li>
-                    <a href="#suporte">Suporte</a>
-                </li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#celulares">Celulares</a></li>
+                <li><a href="#notebooks">Notebooks</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#audio">Áudio</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#suporte">Suporte</a></li>
             </ul>
         </nav>
     </header>
@@ -87,51 +67,53 @@
     <main>
         <!-- Carrossel de imagens -->
         <section id="carousel">
-            <!-- Slide 1 (Sua imagem real) -->
+            <!-- Slide 1 -->
             <article class="slide ativo">
-                <img src="img/carrosel/banner_promocao.png" alt="Banner de promoção">
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/banner_exclusivo.png" alt="Banner Exclusivo">
+                </a>
             </article>
 
-            <!-- Slide 2 (Teste Vermelho) -->
+            <!-- Slide 2 -->
             <article class="slide">
-                <div style="width: 100%; height: 450px; background-color: #ff4757; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
-                    PRODUTO 1 (VERMELHO)
-                </div>
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/Caixa_de_som.png" alt="Caixa de som">
+                </a>
             </article>
 
-            <!-- Slide 3 (Teste Azul) -->
+            <!-- Slide 3 -->
             <article class="slide">
-                <div style="width: 100%; height: 450px; background-color: #1e90ff; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
-                    PRODUTO 2 (AZUL)
-                </div>
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/Fone_Bluetooth.png" alt="Fone Bluetooth">
+                </a>
             </article>
 
-            <!-- Slide 4 (Teste Verde) -->
+            <!-- Slide 4 -->
             <article class="slide">
-                <div style="width: 100%; height: 450px; background-color: #2ed573; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
-                    PRODUTO 3 (VERDE)
-                </div>
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/Smartwatch.png" alt="Smartwatch">
+                </a>
             </article>
 
-            <!-- Slide 5 (Teste Amarelo) -->
+            <!-- Slide 5 -->
             <article class="slide">
-                <div style="width: 100%; height: 450px; background-color: #ffa502; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
-                    PRODUTO 4 (AMARELO)
-                </div>
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/Teclado_mecânico.png" alt="Teclado Mecânico">
+                </a>
             </article>
 
-            <!-- Slide 6 (Teste Roxo) -->
+            <!-- Slide 6 -->
             <article class="slide">
-                <div style="width: 100%; height: 450px; background-color: #3742fa; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">
-                    PRODUTO 5 (ROXO)
-                </div>
+                <a href="#" class="slide-link">
+                    <img src="img/carrosel/ps5.png" alt="PlayStation 5">
+                </a>
             </article>
 
-            <!-- Botões de navegação com IDs em inglês conforme o seu CSS -->
+            <!-- Botões de navegação lateral -->
             <button id="btn-before">&#8592;</button>
             <button id="btn-after">&#8594;</button>
         </section>
-
+    
         <!-- Categoria de produtos -->
 
         <section class="section">
@@ -165,7 +147,6 @@
                     <span>Câmeras</span>
                 </div>
             </div>
-        </section>
 
         <!-- Seção de produtos em destaque -->
         <section class="section" id="productsSection">
@@ -179,7 +160,8 @@
             <div class="products" id="products">
                 <div class="products" data-name="Iphone 13 Pro Max">
                     <div class="products-image">
-                        <img src="./img/iphone-13-max/iphone-13-pro-max-1920x700.png">
+                        <!-- Imagem do iPhone corrigida para a raiz -->
+                        <img src="img/iphone-13-max/iphone-13-pro-max-1920x700.png" alt="iPhone 13 Pro Max">
                         <span class="discount">-20%</span>
                         <button class="favorite-btn">🤍</button>
                     </div>
@@ -192,7 +174,7 @@
         <!-- Rodapé da página -->
     </footer>
 
-    <!-- Conexão com o arquivo JavaScript -->
+    <!-- Script JS para o carrossel -->
     <script src="js/carrossel.js"></script>
 </body>
 

@@ -1,56 +1,90 @@
-// 1. Seleciona os elementos do HTML usando seus IDs
+// 1. Seleciona os elementos do HTML
 const slides = document.querySelectorAll('.slide');
 const btnAfter = document.getElementById('btn-after');
 const btnBefore = document.getElementById('btn-before');
+const carousel = document.getElementById('carousel');
 
 let slideAtual = 0;
-let tempoTroca; // Variável para armazenar o temporizador
+let tempoTroca;
+let trocandoSlide = false; // Trava contra cliques ultra rápidos
 
-// 2. Função para ir para o próximo slide
+// 2. Criar a estrutura dos indicadores (bolinhas)
+const containerIndicadores = document.createElement('div');
+containerIndicadores.classList.add('indicadores');
+carousel.appendChild(containerIndicadores);
+
+// Cria uma bolinha para cada slide existente
+slides.forEach((_, index) => {
+    const bolinha = document.createElement('div');
+    bolinha.classList.add('bolinha');
+    if (index === 0) bolinha.classList.add('ativa');
+    
+    // interacao com a bolinha
+    bolinha.addEventListener('click', () => {
+        if (trocandoSlide || index === slideAtual) return;
+        mudarParaSlide(index);
+        reiniciarTempo();
+    });
+
+    containerIndicadores.appendChild(bolinha);
+});
+
+const bolinhas = containerIndicadores.querySelectorAll('.bolinha');
+
+// 3. mudar as bolinhas e slides
+function mudarParaSlide(novoIndex) {
+    trocandoSlide = true;
+
+    // Remove ativo do slide e da bolinha atual
+    slides[slideAtual].classList.remove('ativo');
+    bolinhas[slideAtual].classList.remove('ativa');
+
+    // Atualiza o índice do slide atual
+    slideAtual = novoIndex;
+
+    // Adiciona ativo no novo slide e na nova bolinha
+    slides[slideAtual].classList.add('ativo');
+    bolinhas[slideAtual].classList.add('ativa');
+
+    // permitir o clique a partir de  (300ms)
+    setTimeout(() => {
+        trocandoSlide = false;
+    }, 300);
+}
+
+// 4. Funções de navegação
 function proximoSlide() {
-    slides[slideAtual].classList.remove('ativo'); // Esconde o slide atual
-    slideAtual++; // Avança 1 na contagem
-    
-    if (slideAtual >= slides.length) {
-        slideAtual = 0; // Se passou do último, volta para o primeiro (Slide 0)
-    }
-    
-    slides[slideAtual].classList.add('ativo'); // Mostra o novo slide
+    let proximo = (slideAtual + 1) % slides.length;
+    mudarParaSlide(proximo);
 }
 
-// 3. Função para voltar para o slide anterior
 function slideAnterior() {
-    slides[slideAtual].classList.remove('ativo'); // Esconde o slide atual
-    slideAtual--; // Volta 1 na contagem
-    
-    if (slideAtual < 0) {
-        slideAtual = slides.length - 1; // Se passou do primeiro, vai para o último
-    }
-    
-    slides[slideAtual].classList.add('ativo'); // Mostra o novo slide
+    let anterior = (slideAtual - 1 + slides.length) % slides.length;
+    mudarParaSlide(anterior);
 }
 
-// 4. Inicia a troca automática (a cada 3000ms = 3 segundos)
+// 5. Controle do Temporizador
 function iniciarAutoSlide() {
     tempoTroca = setInterval(proximoSlide, 3000);
 }
 
-// 5. Reinicia o tempo ao clicar manualmente em um botão
 function reiniciarTempo() {
-    clearInterval(tempoTroca); // Para o tempo atual
-    iniciarAutoSlide();        // Reinicia a contagem do zero
+    clearInterval(tempoTroca);
+    iniciarAutoSlide();
 }
 
-// 6. Conecta os cliques dos botões com as funções
+// 6. botoes laterais
 btnAfter.addEventListener('click', () => {
+    if (trocandoSlide) return;
     proximoSlide();
     reiniciarTempo();
 });
 
 btnBefore.addEventListener('click', () => {
+    if (trocandoSlide) return;
     slideAnterior();
     reiniciarTempo();
 });
 
-// Executa a troca automática assim que a página carrega
+// Inicia a troca automática
 iniciarAutoSlide();
