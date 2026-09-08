@@ -83,7 +83,7 @@ header{
     gap: 12px;
 }
 
-.icon-btn{
+.icon-btn {
     width: 45px;
     height: 45px;
     border: 1px solid #eeeeee;
@@ -93,6 +93,10 @@ header{
     font-size: 18px;
     position: relative;
     transition: .2s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-btn:hover{
@@ -112,7 +116,6 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 /* Navbar Styles */

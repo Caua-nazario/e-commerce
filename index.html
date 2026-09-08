@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-commerce</title>
+    <title>new e-Commerce</title>
 
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/carrossel.css">
     <link rel="stylesheet" href="css/categorias.css">
     <link rel="stylesheet" href="css/produtos.css">
+    <link rel="stylesheet" href="css/cart.css">
 
     <!-- Favicon será adicionado aqui futuramente -->
+    <link rel="icon" href="img/logo_new_e-commerce/favicon_e-commerce.png" type="image/x-icon">
+
 </head>
 
 <body>
@@ -44,9 +47,11 @@
                 <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favorite">♡</button>
 
                 <!-- Carrinho -->
-                <button class="icon-btn" id="btnCart" onclick="openCart()" title="Cart">
-                    🛒 <span class="cart-count" id="cartCount">0</span>
-                </button>
+                <a href="cart.html" style="text-decoration: none;">
+                    <button class="icon-btn" id="btnCart" title="Cart">
+                        🛒 <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </a>
             </div>
         </div>
 
@@ -113,7 +118,7 @@
             <button id="btn-before">&#8592;</button>
             <button id="btn-after">&#8594;</button>
         </section>
-    
+
         <!-- Categoria de produtos -->
 
         <section class="section">
@@ -148,26 +153,26 @@
                 </div>
             </div>
 
-        <!-- Seção de produtos em destaque -->
-        <section class="section" id="productsSection">
-            <div class="section-header">
-                <div>
-                    <h2>Produtos em destaque</h2>
+            <!-- Seção de produtos em destaque -->
+            <section class="section" id="productsSection">
+                <div class="section-header">
+                    <div>
+                        <h2>Produtos em destaque</h2>
+                    </div>
+                    <a href="#">Ver todos →</a>
                 </div>
-                <a href="#">Ver todos →</a>
-            </div>
 
-            <div class="products" id="products">
-                <div class="products" data-name="Iphone 13 Pro Max">
-                    <div class="products-image">
-                        <!-- Imagem do iPhone corrigida para a raiz -->
-                        <img src="img/iphone-13-max/iphone-13-pro-max-1920x700.png" alt="iPhone 13 Pro Max">
-                        <span class="discount">-20%</span>
-                        <button class="favorite-btn">🤍</button>
+                <div class="products" id="products">
+                    <div class="products" data-name="Iphone 13 Pro Max">
+                        <div class="products-image">
+                            <!-- Imagem do iPhone corrigida para a raiz -->
+                            <img src="img/iphone-13-max/iphone-13-pro-max-1920x700.png" alt="iPhone 13 Pro Max">
+                            <span class="discount">-20%</span>
+                            <button class="favorite-btn">🤍</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
     </main>
 
     <footer>
@@ -176,6 +181,8 @@
 
     <!-- Script JS para o carrossel -->
     <script src="js/carrossel.js"></script>
+
 </body>
 
 </html>
+.
