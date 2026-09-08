@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - New e-Commerce</title>
+
+    <!-- Usando a mesma navbar do index e o estilo próprio do carrinho -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/carrinho.css">
+</head>
+
+<body>
+    <!-- Cabeçalho idêntico ao do site -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                New <span>e-Commerce</span>
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="O que você está procurando?">
+                <button id="btnSearch">⌕</button>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="icon-btn" title="Home">🏠</a>
+                <button class="icon-btn" title="Favorite">♡</button>
+                <button class="icon-btn" title="Cart">🛒 <span class="cart-count">1</span></button>
+            </div>
+        </div>
+        <nav class="primary">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#celulares">Celulares</a></li>
+                <li><a href="index.html#notebooks">Notebooks</a></li>
+                <li><a href="index.html#games">Games</a></li>
+                <li><a href="index.html#audio">Áudio</a></li>
+                <li><a href="index.html#ofertas">Ofertas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal do Carrinho -->
+    <main class="cart-container">
+        <h1>Seu Carrinho de Compras</h1>
+
+        <div class="cart-content">
+            <!-- Lista de Produtos no Carrinho -->
+            <div class="cart-items">
+                <!-- Exemplo de Item -->
+                <div class="cart-item">
+                    <img src="img/iphone-13-max/iphone-13-pro-max-1920x700.png" alt="iPhone 13 Pro Max">
+                    <div class="cart-item-details">
+                        <h3>iPhone 13 Pro Max</h3>
+                        <p class="cart-item-price">R$ 4.599,00</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-control">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                        <button class="remove-btn">🗑️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo do Pedido -->
+            <div class="cart-summary">
+                <h2>Resumo do Pedido</h2>
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span>R$ 4.599,00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Frete</span>
+                    <span>Grátis</span>
+                </div>
+                <div class="summary-line total">
+                    <span>Total</span>
+                    <span>R$ 4.599,00</span>
+                </div>
+                <a href="checkout.html" class="checkout-btn">Finalizar Compra</a>
+                <a href="index.html" class="continue-shopping">Continuar Comprando</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Rodapé -->
+    </footer>
+</body>
+
+</html>
