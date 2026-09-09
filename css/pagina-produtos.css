@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+}
+
+header {
+    background: #0f172a;
+    color: #fff;
+    padding: 18px 20px 0;
+}
+
+.header {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #4cc9f0;
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0 16px;
+}
+
+.search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 18px;
+    font-size: 1rem;
+}
+
+.search button {
+    border: none;
+    background: #4cc9f0;
+    color: #0f172a;
+    padding: 0 18px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: #ff4d4d;
+    color: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.primary {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 0 18px;
+}
+
+.primary ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+}
+
+.primary a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.page-product {
+    max-width: 1250px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.product-wrapper {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+}
+
+.product-gallery {
+    display: grid;
+    gap: 16px;
+}
+
+.product-gallery img {
+    width: 100%;
+    border-radius: 16px;
+    background: #eef2ff;
+    display: block;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge {
+    display: inline-block;
+    width: fit-content;
+    background: #dbeafe;
+    color: #1d4ed8;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.product-title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 14px;
+}
+
+.product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.product-price .price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.product-price .old-price {
+    font-size: 1.1rem;
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.product-description {
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.product-meta span {
+    background: #f3f4f6;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #2563eb, #4cc9f0);
+    color: #fff;
+}
+
+.secondary-btn {
+    background: #eef2ff;
+    color: #1f2937;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+    transform: translateY(-1px);
+}
+
+.specs {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 24px;
+}
+
+.specs h3 {
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+}
+
+.specs ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    color: #374151;
+}
+
+.specs li::before {
+    content: '•';
+    color: #2563eb;
+    font-weight: 700;
+    display: inline-block;
+    width: 16px;
+}
+
+@media (max-width: 900px) {
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search {
+        order: 3;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .product-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
