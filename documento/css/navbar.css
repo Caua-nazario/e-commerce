@@ -146,3 +146,57 @@ nav a{
     font-size: 14px;
     transition: 0.3s;
 }
+
+body {
+    background: #f6f7fb;
+    color: #171717;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.modo-escuro {
+    background: #0b1120;
+    color: #f1f5f9;
+}
+
+/* Botão do Tema */
+
+#tema-toggle {
+    display: none;
+}
+
+.theme-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: transparent;
+    border-radius: 11px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    font-size: 18px;
+    
+    transition: 0.3s;
+}
+
+body.modo-escuro .theme-btn {
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+/* Troca entre Sol e Lua */
+
+.lua {
+    display: none;
+}
+
+body.modo-escuro .sol {
+    display: none;
+}
+
+body.modo-escuro .lua {
+    display: inline;
+}
