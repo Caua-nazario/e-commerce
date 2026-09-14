@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCountBadge = document.querySelector('.cart-count');
 
     // Valor inicial do produto (pode ser alterado conforme necessário )
-    const unitPrice = 4599.00;
+    const unitPrice = 2499.00; // Valor do produto em reais
     let quantity = 1;
 
     // Função para formatar números para o padrão de moeda do Brasil (R$ X.XXX,XX)
