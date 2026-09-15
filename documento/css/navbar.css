@@ -226,3 +226,17 @@ body.modo-escuro header{
 body.modo-escuro .primary{
     background: #0b1120;
 }
+
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3394c5;
+    transition: width 0.3s;
+}
+
+/*visibilidade da barra de sublinhado */
+nav a:hover::after {
+    width: 100%;
+}

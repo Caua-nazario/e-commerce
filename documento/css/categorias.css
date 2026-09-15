@@ -55,3 +55,10 @@
     font-size: 13px;
     font-weight: bold;
 }
+.category {
+    transition: transform 0.4s ease;
+}
+
+.category:hover {
+    transform: translateY(-12px);
+}
