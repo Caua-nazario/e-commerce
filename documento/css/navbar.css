@@ -120,7 +120,7 @@ header{
 
 /* Navbar Styles */
 
-.nav{
+.primary{
     background: #1f2937;
 }
 
@@ -181,6 +181,26 @@ body.modo-escuro {
     transition: 0.3s;
 }
 
+/* Ícones do Sol e da Lua */
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.sol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lua {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 body.modo-escuro .theme-btn {
     background: transparent;
     border: none;
@@ -189,14 +209,86 @@ body.modo-escuro .theme-btn {
 
 /* Troca entre Sol e Lua */
 
-.lua {
-    display: none;
-}
-
 body.modo-escuro .sol {
     display: none;
 }
 
 body.modo-escuro .lua {
-    display: inline;
+    display: flex;
+}
+
+/* Header e Navbar no modo escuro */
+
+body.modo-escuro header{
+    background: #0b1120;
+}
+
+body.modo-escuro .primary{
+    background: #0b1120;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3394c5;
+    transition: width 0.3s;
+}
+
+/*visibilidade da barra de sublinhado */
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Área da Conta */
+.account-container {
+    position:relative;
+}
+
+/* Menu da Conta */
+.account-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 280px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Título */
+.account-menu h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* Textos dos campos */
+.account-menu label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Campos */
+.account-menu input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botão cadastrar */
+.account-menu button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
