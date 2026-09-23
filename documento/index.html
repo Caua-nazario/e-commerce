@@ -37,33 +37,33 @@
             <div class="header-actions">
                 <!-- Perfil -->
                 <div class="account-container">
-                
+
                     <button class="icon-btn" id="btnAccount" onclick="openAccount()" title="My account">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-person" viewBox="0 0 16 16">
+                            class="bi bi-person" viewBox="0 0 16 16">
                             <path
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                         </svg>
                         <span class="tooltip">Minha conta</span>
                     </button>
-                
-            <!-- Criar Conta -->
-            <div id="accountMenu" class="account-menu">
-                <h2>Criar Conta</h2>
-                
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Digite seu nome">
 
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Digite seu email">
+                    <!-- Criar Conta -->
+                    <div id="accountMenu" class="account-menu">
+                        <h2>Criar Conta</h2>
 
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Digite sua senha">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" placeholder="Digite seu nome">
 
-                <button onclick="cadastrar()">Cadastrar</button>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Digite seu email">
 
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Digite sua senha">
+
+                        <button onclick="cadastrar()">Cadastrar</button>
+
+                    </div>
                 </div>
-            </div>
 
                 <!-- Favoritos -->
                 <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favorite">♡
@@ -74,7 +74,7 @@
                 <a href="cart.html" style="text-decoration: none;">
                     <button class="icon-btn" id="btnCart" title="Cart">
                         🛒 <span class="cart-count" id="cartCount">0</span>
-                            <span class="tooltip">Carrinho de compras</span>
+                        <span class="tooltip">Carrinho de compras</span>
                     </button>
                 </a>
 
@@ -207,47 +207,172 @@
                     </div>
                     <a href="#">Ver todos →</a>
                 </div>
+                <div class="filter-row">
+                    <button class="filter-chip action" data-filter="todos">Todos</button>
+                    <button class="filter-chip" data-filter="Informática">Informática</button>
+                    <button class="filter-chip" data-filter="Celulares">Celulares</button>
+                    <button class="filter-chip" data-filter="Áudios">Áudios</button>
+                    <button class="filter-chip" data-filter="Smartwatches">Smartwatches</button>
+                    <button class="filter-chip" data-filter="Games">Games</button>
+                    <button class="filter-chip" data-filter="Câmeras">Câmeras</button>
+                </div>
+
+                <p class="results-message" id="resultsMessage" aria-live="polite"></p>
 
                 <div class="products" id="products">
-                    <div class="products" data-name="Iphone 13 Pro Max">
-                        <div class="products-image">
-                            <img src="img/produtos/celulares/iphone 13 pro max.png" alt="iPhone 13 Pro Max">
+                    <article class="product" data-id="1">
+                        <div class="product-image">
                             <span class="discount">-20%</span>
-                            <button class="favorite-btn">🤍</button>
+                            <button class="favorite" data-favorite="1" aria-label="Favoritar Notebook">♡</button>
+                            <img src="img/produtos/notebook.svg" alt="Notebook"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">💻</span>
                         </div>
-                    </div>
-                </div>
-
-                 <div class="products" id="products">
-                    <div class="products" data-name="?">
-                        <div class="products-image">
-                            <img src="img/" alt="?">
-                            <span class="discount">-20%</span>
-                            <button class="favorite-btn">🤍</button>
+                        <div class="product-info">
+                            <div class="product-category">Informática</div>
+                            <div class="product-name">Notebook</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 5.999,90</div>
+                            <div class="price">R$ 4.799,90</div>
+                            <button class="add-cart" data-add="1">Adicionar ao Carrinho</button>
                         </div>
-                    </div>
-                </div>
-
-                 <div class="products" id="products">
-                    <div class="products" data-name="?">
-                        <div class="products-image">
-                            <img src="img/" alt="?">
-                            <span class="discount">-20%</span>
-                            <button class="favorite-btn">🤍</button>
+                    </article>
+                    <article class="product" data-id="2">
+                        <div class="product-image">
+                            <span class="discount">-15%</span>
+                            <button class="favorite" data-favorite="2" aria-label="Favoritar Smartphone">♡</button>
+                            <img src="img/produtos/smartphone.svg" alt="Smartphone"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">📱</span>
                         </div>
-                    </div>
-                </div>
-
-                 <div class="products" id="products">
-                    <div class="products" data-name="?">
-                        <div class="products-image">
-                            <img src="img/" alt="?">
->>>>>>> 
-                            <span class="discount">-20%</span>
-                            <button class="favorite-btn">🤍</button>
+                        <div class="product-info">
+                            <div class="product-category">Celulares</div>
+                            <div class="product-name">Smartphone</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 2.999,90</div>
+                            <div class="price">R$ 2.549,90</div>
+                            <button class="add-cart" data-add="2">Adicionar ao Carrinho</button>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                    <article class="product" data-id="3">
+                        <div class="product-image">
+                            <span class="discount">-30%</span>
+                            <button class="favorite" data-favorite="3" aria-label="Favoritar Headset">♡</button>
+                            <img src="img/produtos/headset.svg" alt="Headset"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">🎧</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Games</div>
+                            <div class="product-name">Headset</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 400,00</div>
+                            <div class="price">R$ 280,00</div>
+                            <button class="add-cart" data-add="3">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="4">
+                        <div class="product-image">
+                            <span class="discount">-25%</span>
+                            <button class="favorite" data-favorite="4" aria-label="Favoritar Smartwatch">♡</button>
+                            <img src="img/produtos/smartwatch.svg" alt="Smartwatch"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">⌚</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Smartwatchs</div>
+                            <div class="product-name">Smartwatch</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 700,00</div>
+                            <div class="price">R$ 525,00</div>
+                            <button class="add-cart" data-add="4">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="5">
+                        <div class="product-image">
+                            <span class="discount">-23%</span>
+                            <button class="favorite" data-favorite="5" aria-label="Favoritar Fone de Ouvido">♡</button>
+                            <img src="img/produtos/fone-ouvido.svg" alt="Fone de Ouvido"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">🎧</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Áudio</div>
+                            <div class="product-name">Fone de Ouvido</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 229,90</div>
+                            <div class="price">R$ 179,90</div>
+                            <button class="add-cart" data-add="5">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="6">
+                        <div class="product-image">
+                            <span class="discount">-23%</span>
+                            <button class="favorite" data-favorite="6" aria-label="Favoritar Caixa de Som">♡</button>
+                            <img src="img/produtos/caixa-som.svg" alt="Caixa de Som"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">🔊</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Áudio</div>
+                            <div class="product-name">Caixa de Som</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 649,90</div>
+                            <div class="price">R$ 499,90</div>
+                            <button class="add-cart" data-add="6">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="7">
+                        <div class="product-image">
+                            <span class="discount">-27%</span>
+                            <button class="favorite" data-favorite="7" aria-label="Favoritar Teclado Mecânico">♡</button>
+                            <img src="img/produtos/teclado-mecanico.svg" alt="Teclado Mecânico"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">⌨️</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Informática</div>
+                            <div class="product-name">Teclado Mecânico</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 399,90</div>
+                            <div class="price">R$ 299,90</div>
+                            <button class="add-cart" data-add="7">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="8">
+                        <div class="product-image">
+                            <span class="discount">-12%</span>
+                            <button class="favorite" data-favorite="8" aria-label="Favoritar Ipad">♡</button>
+                            <img src="img/produtos/ipad.svg" alt="Ipad"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">📱</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Informática</div>
+                            <div class="product-name">Ipad</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 2.499,90</div>
+                            <div class="price">R$ 2.199,90</div>
+                            <button class="add-cart" data-add="8">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
+                    <article class="product" data-id="9">
+                        <div class="product-image">
+                            <span class="discount">-13%</span>
+                            <button class="favorite" data-favorite="9" aria-label="Favoritar Câmera Profissional">♡</button>
+                            <img src="img/produtos/camera.svg" alt="Câmera Profissional"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="product-plaeholder" style="display:none">📷</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Câmeras</div>
+                            <div class="product-name">Câmera Profissional</div>
+                            <div class="rating">★★★★★</div>
+                            <div class="price-old">R$ 4.499,90</div>
+                            <div class="price">R$ 3.899,90</div>
+                            <button class="add-cart" data-add="9">Adicionar ao Carrinho</button>
+                        </div>
+                    </article>
             </section>
     </main>
 
