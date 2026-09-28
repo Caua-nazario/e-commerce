@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/pagina-produtos.css">
 
     <!-- Favicon será adicionado aqui futuramente -->
-    <link rel="icon" href="img/logo_new_e-commerce/favicon_e-commerce.png" type="image/x-icon">
+    <link rel="icon" href="img/logo/cart-favicon_files/image_82f725.png" type="image/x-icon">
 
 </head>
 
@@ -36,39 +36,28 @@
             <!-- Ações (Perfil, Favoritos, Carrinho) -->
             <div class="header-actions">
                 <!-- Perfil -->
+
+                <!-- Perfil -->
                 <div class="account-container">
-
-                    <button class="icon-btn" id="btnAccount" onclick="openAccount()" title="My account">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-person" viewBox="0 0 16 16">
-                            <path
-                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                        </svg>
-                        <span class="tooltip">Minha conta</span>
-                    </button>
-
-                    <!-- Criar Conta -->
-                    <div id="accountMenu" class="account-menu">
-                        <h2>Criar Conta</h2>
-
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" placeholder="Digite seu nome">
-
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Digite seu email">
-
-                        <label for="senha">Senha</label>
-                        <input type="password" id="senha" placeholder="Digite sua senha">
-
-                        <button onclick="cadastrar()">Cadastrar</button>
-
-                    </div>
+                    <a href="account.html" style="text-decoration: none;">
+                        <button class="icon-btn" id="btnAccount" title="Minha conta">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                            </svg>
+                            <span class="tooltip">Minha conta</span>
+                        </button>
+                    </a>
                 </div>
 
+
                 <!-- Favoritos -->
-                <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favorite">♡
-                    <span class="tooltip">Favoritos</span>
-                </button>
+                <a href="favorite.html" style="text-decoration: none;">
+                    <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favorite">♡
+                        <span class="tooltip">Favoritos</span>
+                    </button>
+                </a>
 
                 <!-- Carrinho -->
                 <a href="cart.html" style="text-decoration: none;">
@@ -325,7 +314,8 @@
                     <article class="product" data-id="7">
                         <div class="product-image">
                             <span class="discount">-27%</span>
-                            <button class="favorite" data-favorite="7" aria-label="Favoritar Teclado Mecânico">♡</button>
+                            <button class="favorite" data-favorite="7"
+                                aria-label="Favoritar Teclado Mecânico">♡</button>
                             <img src="img/produtos/teclado-mecanico.svg" alt="Teclado Mecânico"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="product-plaeholder" style="display:none">⌨️</span>
@@ -359,7 +349,8 @@
                     <article class="product" data-id="9">
                         <div class="product-image">
                             <span class="discount">-13%</span>
-                            <button class="favorite" data-favorite="9" aria-label="Favoritar Câmera Profissional">♡</button>
+                            <button class="favorite" data-favorite="9"
+                                aria-label="Favoritar Câmera Profissional">♡</button>
                             <img src="img/produtos/camera.svg" alt="Câmera Profissional"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="product-plaeholder" style="display:none">📷</span>

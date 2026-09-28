@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Seu E-commerce</title>
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/navbar.css">
+
+
+<body class="login-body">
+
+    <header>
+        <div class="header">
+            <div class="logo">
+                New <span>e-Commerce</span>
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="O que você está procurando?">
+                <button id="btnSearch">⌕</button>
+            </div>
+
+            <div class="header-actions">
+                <a href="index.html" class="icon-btn" title="Home">⌂</a>
+
+                <button class="icon-btn" title="Favorite">♡</button>
+
+                <a href="cart.html">
+                    <button class="icon-btn" title="Cart">
+                        🛒 <span class="cart-count">0</span>
+                    </button>
+                </a>
+                <!-- Tema -->
+                <input type="checkbox" id="tema-toggle">
+
+                <label for="tema-toggle" class="theme-btn">
+                    <span class="sol">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-sun" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+                        </svg>
+                    </span>
+                    <span class="lua">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+                        </svg>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <nav class="primary">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#celulares">Celulares</a></li>
+                <li><a href="index.html#notebooks">Notebooks</a></li>
+                <li><a href="index.html#games">Games</a></li>
+                <li><a href="index.html#audio">Áudio</a></li>
+                <li><a href="index.html#ofertas">Ofertas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-main">
+        <div class="login-card">
+            <h2>Acesse ou crie sua conta</h2>
+
+            <!-- Abas para Alternar entre Login e Criar Conta -->
+            <div class="auth-tabs">
+                <button type="button" class="tab-btn active">Login</button>
+                <button type="button" class="tab-btn">Criar Conta</button>
+                <div class="tab-indicator"></div>
+            </div>
+
+            <form id="auth-form">
+
+                <div class="input-group" id="name-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Nome completo" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="E-mail" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Senha" autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-btn">Entrar</button>
+
+                <!-- BOTÃO DO GOOGLE -->
+                <div class="divider"><span>Ou entre com</span></div>
+
+                <button type="button" class="btn-google" id="btn-google">
+                    <!-- Ícone do Google -->
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="#4285F4"
+                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" />
+                        <path fill="#34A853"
+                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.19v3.15C3.17 21.36 7.23 24 12 24z" />
+                        <path fill="#FBBC05"
+                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.19C.43 8.12 0 9.87 0 12s.43 3.88 1.19 5.42l4.09-3.15z" />
+                        <path fill="#EA4335"
+                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.17 2.64 1.19 6.58l4.09 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
+                    </svg>
+                    Continuar com o Google
+                </button>
+
+                <div class="auth-footer">
+                    <a href="#" id="forgot-link">Esqueceu sua senha?</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/account.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>
+
+<!-- o html eu fiz , o css com ajuda da IA pra algumas coisas e o js foi todo feito por IA , mais com bastante atencao-->
