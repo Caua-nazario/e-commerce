@@ -163,3 +163,85 @@ element.style {
     border-radius: 10px;
     font-weight: 800;
 }
+
+/* Rastreio */
+
+.section {
+    max-width: 1250px;
+    margin: 55px auto;
+    padding: 0 20px;
+}
+
+.tracking-card {
+    background: #fff;
+    border: 1px solid black var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.eyebrow {
+    color: #3394c5 var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.tag, .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .04em;
+}
+
+.tracking-card h2 {
+    margin-bottom: 8px;
+}
+
+.section h2 {
+    font-size: 27px;
+}
+
+.tracking-card p {
+    color: var(--muted);
+}
+
+.tracking-form {
+    display: flex;
+    gap: 9px;
+}
+
+.tracking-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 13px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.tracking-form .primary-btn {
+    background: var(--primary);
+    color: #fff;
+}
+
+.primary-btn {
+    border: 0;
+    background: #fff;
+    color: #5124b8;
+    padding: 13px 21px;
+    border-radius: 11px;
+    font-weight: 800;
+    transition: .25s;
+}
+button {
+    cursor: pointer;
+}
+
+.tracking-result {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
