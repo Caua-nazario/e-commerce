@@ -46,18 +46,20 @@ header{
 
 .search{
     flex: 1;
-    max-width: 550px;
-    position: relative;
+    display: flex;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0 16px;
 }
 
 .search input{
-    width: 100%;
-    padding: 14px 50px 14px 18px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+    flex: 1;
+    border: none;
     outline: none;
-    font-size: 14px;
-    transition: .3s;
+    padding: 14px 18px;
+    font-size: 1rem;
 }
 
 .search input:focus{
@@ -66,19 +68,15 @@ header{
 }
 
 .search button{
-    position: absolute;
-    right: 7px;
-    top: 6px;
     border: none;
     background: transparent !important;
     color: gray;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
+    padding: 0 18px;
+    font-size: 1.2rem;
     cursor: pointer;
     }
 
-    .search button::before {
+.search button::before{
     content: '';
     position: absolute;
     left: 0;

@@ -9,7 +9,6 @@ html::-webkit-scrollbar {
 
 /* Fundo da página */
 body.login-body {
-    background: radial-gradient(circle at 50% 30%, #0b1419 0%, #05080b 70%);
     color: #fff;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     margin: 0;

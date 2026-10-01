@@ -32,11 +32,11 @@ body {
 }
 
 .cart-header-title h1 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin: 0;
-    letter-spacing: -0.8px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #3ddcf0;
+    margin: 0 0 8px;
+    text-shadow: 0 0 10px rgba(61, 220, 240, 0.3);
 }
 
 .items-count {
