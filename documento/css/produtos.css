@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .section{
     max-width: 1250px;
     margin: 55px auto;
@@ -194,18 +201,21 @@ element.style {
     font-size: 12px;
     font-weight: 800;
     letter-spacing: .04em;
+    color: #3394c5;
 }
 
 .tracking-card h2 {
     margin-bottom: 8px;
+    color: black;
 }
 
 .section h2 {
     font-size: 27px;
+    color: black;
 }
 
 .tracking-card p {
-    color: var(--muted);
+    color: black;
 }
 
 .tracking-form {
@@ -223,14 +233,14 @@ element.style {
 }
 
 .tracking-form .primary-btn {
-    background: var(--primary);
+    background: #3394c5;
     color: #fff;
 }
 
 .primary-btn {
     border: 0;
-    background: #fff;
-    color: #5124b8;
+    background: #3394c5;
+    color: #fff;
     padding: 13px 21px;
     border-radius: 11px;
     font-weight: 800;

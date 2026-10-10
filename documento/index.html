@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/produtos.css">
     <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="CSS/account.css">
+    <link rel="stylesheet" href="css/atendimento.css">
+    <link rel="stylesheet" href="css/rodapé.css">
+
     <!-- Favicon será adicionado aqui futuramente -->
     <link rel="icon" href="img/logo/cart-favicon_files/image_82f725.png" type="image/x-icon">
 
@@ -365,7 +368,7 @@
                     </article>
             </section>
 
-            <!--Rastreio-->
+            <!-- Rastreio -->
             <section class="section tracking-section" id="rastreio">
                 <div class="tracking-card">
                     <div>
@@ -380,11 +383,74 @@
                     <div class="tracking-result" id="trackingResult" hidden></div>
                 </div>
             </section>
+
+            <!-- Atendimento -->
+             <Section class="section" id="suporte">
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">Atendimento</span>
+                        <h2>Como podemos ajudar?</h2>
+                    </div>
+                </div>
+                <div class="support-grid">
+                    <button class="support-card" data-support="chat">
+                        <span>💬</span>
+                        <div>
+                            <h3>Atendimento</h3>
+                            <p>Fale com nosso time de suporte.</p>
+                        </div>
+                    </button>
+                    <button class="support-card" data-support="troca">
+                        <span>↩️</span>
+                        <div>
+                            <h3>Trocas e devoluções</h3>
+                            <p>Consulte as condições e o processo de troca ou devolução.</p>
+                        </div>
+                    </button>
+                    <button class="support-card" data-support="pagamento">
+                        <span>💳</span>
+                        <div>
+                            <h3>Pagamento</h3>
+                            <p>Ajuda com formas de pagamento.</p>
+                        </div>
+                    </button>
+                    <button class="support-card" data-support="pedido">
+                        <span>📦</span>
+                        <div>
+                            <h3>Meu pedido</h3>
+                            <p>Consulte informações da compra.</p>
+                        </div>
+                    </button>
+                </div>
+             </Section>
+
+             <!-- Beneficios -->
+             <section class="section benefits-section">
+                <div class="benefits">
+                    <article class="benefit">
+                        <span>🚚</span>
+                        <h3>Frete rápido</h3>
+                        <p>Entrega rápida e segura para todo o Brasil.</p>
+                    </article>
+                    <article class="benefit">
+                        <span>🔒</span>
+                        <h3>Compra segura</h3>
+                        <p>Seus dados protegidos durante a experiência.</p>
+                    </article>
+                    <article class="benefit">
+                        <span>💳</span>
+                        <h3>Pagamento facilitado</h3>
+                        <p>Escolha a forma de pagamento adequado à sua compra.</p>
+                    </article>
+                    <article class="benefit">
+                        <span>↩️</span>
+                        <h3>Troca fácil</h3>
+                        <p>Consulte as condições para trocas e devoluções.</p>
+                    </article>
+                </div>
+             </section>
     </main>
 
-    <footer>
-        <!-- Rodapé da página -->
-    </footer>
 
     <!-- Script JS para o carrossel -->
     <script src="js/carrossel.js"></script>
@@ -392,5 +458,34 @@
     <script src="js/conta.js"></script>
 
 </body>
+
+<footer>
+        <!-- Rodapé da página -->
+        <div class="footer">
+            <div>
+                <h3>New e-Commerce</h3>
+                <p>Tecnologia, inovação e produtos eletrônicos para você.</p>
+            </div>
+            <div>
+                <h3>Empresas</h3>
+                <a href="#inico">Sobre nós</a>
+                <a href="#suporte">Contato</a>
+                <a href="#suporte">Trabalhe conosco</a>
+            </div>
+            <div>
+                <h3>Atendimento</h3>
+                <a href="#suporte">Central de ajuda</a>
+                <a href="#suporte">Trocas e devoluções</a>
+                <a href="#rastreio">Rastrear pedido</a>
+            </div>
+            <div>
+                <h3>Redes Sociais</h3>
+                <a href="#" data-social="Instagram">Instagram</a>
+                <a href="#" data-social="Facebook">Facebook</a>
+                <a href="#" data-social="Tiktok">Tiktok</a>
+            </div>
+        </div>
+        <div class="copyright">© 2026 New e-Commerce — Todos os direitos reservados.</div>      
+</footer>
 
 </html>
