@@ -1,0 +1,373 @@
+/* Estilos compartilhados do cabeçalho, busca, navegação e controle do tema. */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #f6f7fb;
+    color: #171717;
+}
+
+/* Header */
+
+header{
+    background: #111827;
+    color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Header Styles */
+
+.header{
+    max-width: 1250px;
+    margin: auto;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: 800;
+    color: white;
+}
+
+.logo span{
+    color: #3394c5;
+}
+
+.search{
+    flex: 1;
+    display: flex;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0 16px;
+}
+
+.search input{
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 18px;
+    font-size: 1rem;
+}
+
+.search input:focus{
+    border-color: #3394c5;
+    box-shadow: 0 0 0 3px rgba(108,53,255,.1);
+}
+
+.search button{
+    border: none;
+    background: transparent !important;
+    color: gray;
+    padding: 0 18px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    }
+
+.search button::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 22px;
+    background: gray;
+}
+
+.header-actions{
+    display: flex;
+    gap: 12px;
+}
+
+.icon-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #eeeeee;
+    background: white;
+    border-radius: 11px;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    transition: .2s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover{
+    background: #f2efff;
+}
+
+.cart-count{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff3d71;
+    color: white;
+    font-size: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navbar Styles */
+
+.primary{
+    background: #0f172a;
+}
+
+
+.primary > ul {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 40px;
+    padding: 14px;
+}
+
+.primary > ul > li{
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+.primary a,
+.nav-category-toggle {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-category-menu {
+    position: relative;
+}
+
+.nav-category-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.nav-category-toggle span {
+    color: #8dcbea;
+    font-size: 17px;
+}
+
+.nav-category-toggle:focus-visible,
+.nav-category-panel a:focus-visible {
+    outline: 2px solid #8dcbea;
+    outline-offset: 4px;
+}
+
+.nav-category-panel,
+.nav-category-panel[hidden] {
+    display: none;
+}
+
+.nav-category-panel:not([hidden]) {
+    position: absolute;
+    z-index: 1100;
+    top: calc(100% + 18px);
+    left: 50%;
+    display: grid;
+    width: min(1000px, calc(100vw - 32px));
+    max-height: min(72vh, 620px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 28px;
+    overflow-y: auto;
+    padding: 25px;
+    transform: translateX(-50%);
+    border: 1px solid #dce5ec;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.24);
+    color: #1e293b;
+}
+
+.nav-category-group h3 {
+    margin-bottom: 10px;
+    color: #123b52;
+    font-size: 15px;
+}
+
+.nav-category-group h4 {
+    margin: 11px 0 3px;
+    color: #718096;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.nav-category-group a,
+.nav-category-all {
+    display: block;
+    padding: 3px 0;
+    color: #334155;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.nav-category-group a:hover,
+.nav-category-all:hover {
+    color: #1479a5;
+}
+
+.nav-category-group a::after,
+.nav-category-all::after {
+    display: none;
+}
+
+.nav-category-all {
+    align-self: end;
+    color: #1479a5;
+    font-weight: 700;
+}
+
+body {
+    background: #f6f7fb;
+    color: #171717;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.modo-escuro {
+    background: #0b1120;
+    color: #f1f5f9;
+}
+
+/* Botão do Tema */
+
+#tema-toggle {
+    display: none;
+}
+
+.theme-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: transparent;
+    border-radius: 11px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    font-size: 18px;
+    
+    transition: 0.3s;
+}
+
+/* Ícones do Sol e da Lua */
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.sol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lua {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+body.modo-escuro .theme-btn {
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+/* Troca entre Sol e Lua */
+
+body.modo-escuro .sol {
+    display: none;
+}
+
+body.modo-escuro .lua {
+    display: flex;
+}
+
+/* Header e Navbar no modo escuro */
+
+body.modo-escuro header{
+    background: #0b1120;
+}
+
+body.modo-escuro .primary{
+    background: #0b1120;
+}
+
+.primary > ul > li > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #3394c5;
+    transition: width 0.3s;
+}
+
+/*visibilidade da barra de sublinhado */
+.primary > ul > li > a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .primary > ul {
+        gap: 22px;
+    }
+
+    .nav-category-panel:not([hidden]) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .primary > ul {
+        justify-content: flex-start;
+        gap: 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .nav-category-panel:not([hidden]) {
+        position: fixed;
+        top: 126px;
+        left: 12px;
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 145px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 18px;
+        transform: none;
+        white-space: normal;
+    }
+}

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<!-- Página de favoritos: mostra os produtos salvos e permite removê-los da lista. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>favorios</title>
-    <link rel="stylesheet" href="css/favorite.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="assets/css/pages/favorite.css">
+    <link rel="stylesheet" href="assets/css/shared/navbar.css">
 </head>
 
 <body class="fav-body">
@@ -22,7 +23,7 @@
             <!-- Barra de busca -->
             <div class="search">
                 <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button id="btnSearch" onclick="searchProducts()">⌕</button>
+                <button id="btnSearch" type="button" aria-label="Buscar produtos">⌕</button>
             </div>
 
             <!-- Ações (Perfil, Favoritos, Carrinho) -->
@@ -46,7 +47,7 @@
 
                 <!-- Favoritos -->
                 <a href="favorite.html" style="text-decoration: none;">
-                    <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favoritos">♡
+                    <button class="icon-btn" id="btnFavorites" title="Favoritos">♡
                         <span class="tooltip"></span>
                     </button>
                 </a>
@@ -96,6 +97,7 @@
         </nav>
     </header>
 
+    <!-- Título e instruções da lista de favoritos. -->
     <nav class="fav-header">
         <div class="fav-header-content">
             <h1>Meus Favoritos</h1>
@@ -104,6 +106,7 @@
     </nav>
 
     
+    <!-- A lista inicial é atualizada pelo JavaScript com os favoritos salvos. -->
     <main class="fav-main">
         <div class="fav-grid">
 
@@ -173,8 +176,10 @@
         </div>
     </main>
 
-    <script src="./js/tema.js"></script>
-    <script src="./js/navbar.js"></script>
+    <!-- Scripts para tema, recursos compartilhados do cabeçalho e lista de favoritos. -->
+    <script src="assets/js/shared/tema.js"></script>
+    <script src="assets/js/shared/navbar.js"></script>
+    <script src="assets/js/pages/favorite.js"></script>
 
 </body>
 

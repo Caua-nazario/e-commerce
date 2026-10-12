@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<!-- Página inicial: reúne banners, categorias, catálogo, rastreio e atendimento. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>new e-Commerce</title>
 
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/carrossel.css">
-    <link rel="stylesheet" href="css/categorias.css">
-    <link rel="stylesheet" href="css/produtos.css">
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="CSS/account.css">
-    <link rel="stylesheet" href="css/atendimento.css">
-    <link rel="stylesheet" href="css/rodapé.css">
+    <link rel="stylesheet" href="assets/css/shared/navbar.css">
+    <link rel="stylesheet" href="assets/css/storefront/carrossel.css">
+    <link rel="stylesheet" href="assets/css/storefront/categorias.css">
+    <link rel="stylesheet" href="assets/css/storefront/produtos.css">
+    <link rel="stylesheet" href="assets/css/pages/cart.css">
+    <link rel="stylesheet" href="assets/css/pages/account.css">
+    <link rel="stylesheet" href="assets/css/storefront/atendimento.css">
+    <link rel="stylesheet" href="assets/css/shared/rodapé.css">
 
     <!-- Favicon será adicionado aqui futuramente -->
-    <link rel="icon" href="img/logo/cart-favicon_files/image_82f725.png" type="image/x-icon">
-
 </head>
 
 <body>
     <!--Cabeçalho-->
-    <header>
+    <header id="inicio">
         <div class="header">
             <!-- Logo -->
             <div class="logo">
@@ -32,7 +31,7 @@
             <!-- Barra de busca -->
             <div class="search">
                 <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button id="btnSearch" onclick="searchProducts()">⌕</button>
+                <button id="btnSearch" type="button" aria-label="Buscar produtos">⌕</button>
             </div>
 
             <!-- Ações (Perfil, Favoritos, Carrinho) -->
@@ -56,7 +55,7 @@
 
                 <!-- Favoritos -->
                 <a href="favorite.html" style="text-decoration: none;">
-                    <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favoritos">♡
+                    <button class="icon-btn" id="btnFavorites" title="Favoritos">♡
                         <span class="tooltip"></span>
                     </button>
                 </a>
@@ -95,7 +94,75 @@
         <nav class="primary">
             <ul id="Menu">
                 <li><a href="#">Home</a></li>
-                <li><a href="#categorias">Categorias</a></li>
+                <li class="nav-category-menu">
+                    <button class="nav-category-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="navCategoryPanel">
+                        Categorias <span aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="nav-category-panel" id="navCategoryPanel" hidden>
+                        <div class="nav-category-group">
+                            <h3>Celulares</h3>
+                            <h4>Samsung</h4>
+                            <a href="#productsSection" data-nav-product="10">Galaxy A55 5G</a>
+                            <h4>Motorola</h4>
+                            <a href="#productsSection" data-nav-product="11">Edge 50 Fusion</a>
+                            <h4>Xiaomi</h4>
+                            <a href="#productsSection" data-nav-product="12">Redmi Note 13 Pro 5G</a>
+                            <h4>Apple</h4>
+                            <a href="#productsSection" data-nav-product="13">iPhone 13 Pro Max</a>
+                            <a href="#productsSection" data-nav-product="23">iPhone Pro</a>
+                        </div>
+                        <div class="nav-category-group">
+                            <h3>Notebooks e informática</h3>
+                            <h4>Dell</h4>
+                            <a href="#productsSection" data-nav-product="16">Notebook para estudos</a>
+                            <h4>Apple</h4>
+                            <a href="#productsSection" data-nav-product="17">Notebook Air 13</a>
+                            <a href="#productsSection" data-nav-product="1">Notebook</a>
+                            <a href="#productsSection" data-nav-product="8">Tablet</a>
+                            <a href="#productsSection" data-nav-product="7">Teclado mecânico</a>
+                            <a href="#productsSection" data-nav-product="28">Monitor portátil UPERFECT</a>
+                        </div>
+                        <div class="nav-category-group">
+                            <h3>Áudio e fones</h3>
+                            <h4>JBL</h4>
+                            <a href="#productsSection" data-nav-product="26">Caixa JBL Party</a>
+                            <a href="#productsSection" data-nav-product="6">Caixa de som</a>
+                            <h4>Fones</h4>
+                            <a href="#productsSection" data-nav-product="18">Headphone Bluetooth</a>
+                            <a href="#productsSection" data-nav-product="19">Fone Bluetooth compacto</a>
+                            <a href="#productsSection" data-nav-product="3">Headset gamer</a>
+                            <a href="#productsSection" data-nav-product="5">Fone de ouvido</a>
+                        </div>
+                        <div class="nav-category-group">
+                            <h3>Games</h3>
+                            <h4>Microsoft</h4>
+                            <a href="#productsSection" data-nav-product="14">Xbox Series S</a>
+                            <h4>Sony</h4>
+                            <a href="#productsSection" data-nav-product="15">PlayStation 5</a>
+                            <h4>GPD</h4>
+                            <a href="#productsSection" data-nav-product="27">WIN Max 2 (2025)</a>
+                        </div>
+                        <div class="nav-category-group">
+                            <h3>Wearables e câmeras</h3>
+                            <h4>Xiaomi</h4>
+                            <a href="#productsSection" data-nav-product="24">Redmi Watch 6</a>
+                            <a href="#productsSection" data-nav-product="22">Smartwatch esportivo</a>
+                            <a href="#productsSection" data-nav-product="4">Smartwatch</a>
+                            <h4>Canon</h4>
+                            <a href="#productsSection" data-nav-product="20">EOS Rebel</a>
+                            <a href="#productsSection" data-nav-product="21">Câmera mirrorless</a>
+                            <a href="#productsSection" data-nav-product="9">Câmera digital</a>
+                        </div>
+                        <div class="nav-category-group">
+                            <h3>Casa inteligente</h3>
+                            <h4>Amazon</h4>
+                            <a href="#productsSection" data-nav-product="25">Echo Dot com Alexa</a>
+                            <a href="#productsSection" data-nav-product="29">Lixeira inteligente</a>
+                            <a href="#productsSection" data-nav-product="30">Robô aspirador</a>
+                        </div>
+                        <a class="nav-category-all" href="#categorias">Ver todas as categorias</a>
+                    </div>
+                </li>
                 <li><a href="#celulares">Celulares</a></li>
                 <li><a href="#notebooks">Notebooks</a></li>
                 <li><a href="#games">Games</a></li>
@@ -107,47 +174,77 @@
     </header>
 
     <main>
-        <!-- Carrossel de imagens -->
+        <!-- Banners de ofertas: cada slide leva à categoria correspondente do catálogo. -->
         <section id="carousel">
             <!-- Slide 1 -->
             <article class="slide ativo">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/Banner Exclusivo.png" alt="Banner Exclusivo">
+                    <img src="assets/images/banners/Banner Exclusivo.png" alt="Seleção de ofertas em produtos eletrônicos">
                 </a>
             </article>
 
             <!-- Slide 2 -->
             <article class="slide">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/caixa de som.png" alt="Caixa de som">
+                    <img src="assets/images/banners/caixa de som.png" alt="Caixa de som para ouvir suas músicas">
+                    <div class="slide-copy">
+                        <span class="slide-eyebrow">Som para acompanhar você</span>
+                        <h2>Curta suas músicas com mais presença</h2>
+                        <p>Conheça caixas de som e outros produtos de áudio no catálogo.</p>
+                        <span class="slide-cta">Explorar áudio</span>
+                    </div>
                 </a>
             </article>
 
             <!-- Slide 3 -->
             <article class="slide">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/fone bluethooth.png" alt="Fone Bluetooth">
+                    <img src="assets/images/banners/fone bluethooth.png" alt="Fone Bluetooth para ouvir música">
+                    <div class="slide-copy">
+                        <span class="slide-eyebrow">Seu som, do seu jeito</span>
+                        <h2>Fones para música, chamadas e rotina</h2>
+                        <p>Veja os modelos disponíveis na categoria de áudio.</p>
+                        <span class="slide-cta">Ver fones e áudio</span>
+                    </div>
                 </a>
             </article>
 
             <!-- Slide 4 -->
             <article class="slide">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/smartwath.png" alt="Smartwatch">
+                    <img src="assets/images/banners/smartwath.png" alt="Relógio inteligente smartwatch">
+                    <div class="slide-copy">
+                        <span class="slide-eyebrow">Tecnologia no pulso</span>
+                        <h2>Descubra os destaques em smartwatches</h2>
+                        <p>Explore relógios inteligentes e encontre seu próximo companheiro.</p>
+                        <span class="slide-cta">Ver smartwatches</span>
+                    </div>
                 </a>
             </article>
 
             <!-- Slide 5 -->
             <article class="slide">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/teclado mecânico.png" alt="Teclado Mecânico">
+                    <img src="assets/images/banners/teclado mecânico.png" alt="Teclado mecânico para computador">
+                    <div class="slide-copy">
+                        <span class="slide-eyebrow">Monte seu espaço</span>
+                        <h2>Mais conforto para jogar e trabalhar</h2>
+                        <p>Confira teclados e acessórios de informática no catálogo.</p>
+                        <span class="slide-cta">Explorar informática</span>
+                    </div>
                 </a>
             </article>
 
             <!-- Slide 6 -->
             <article class="slide">
                 <a href="#" class="slide-link">
-                    <img src="img/carrossel/ps5.png" alt="PlayStation 5">
+                    <img src="assets/images/banners/ps5.png" alt="Console PlayStation 5">
+                    <div class="slide-copy">
+                        <span class="slide-eyebrow">Partiu jogar?</span>
+                        <h2>Entre no universo dos games</h2>
+                        <p>Veja consoles e acessórios. Valores e condições são demonstrativos.</p>
+                        <span class="slide-cta">Explorar games</span>
+                    </div>
                 </a>
             </article>
 
@@ -156,42 +253,61 @@
             <button id="btn-after">&#8594;</button>
         </section>
 
-        <!-- Categoria de produtos -->
-
-        <section class="section">
+        <!-- Atalhos para filtrar rapidamente o catálogo por categoria. -->
+        <section class="section" id="categorias">
             <div class="section-header">
                 <h2>Categorias</h2>
                 <a href="#">Ver todas</a>
             </div>
-            <div class="categories">
-                <div class="category">
-                    <div class="category-icon">💻</div>
-                    <span>Notebooks</span>
-                </div>
-                <div class="category">
-                    <div class="category-icon">📱</div>
-                    <span>Celulares</span>
-                </div>
-                <div class="category">
-                    <div class="category-icon">🎧</div>
-                    <span>Fones de Ouvido</span>
-                </div>
-                <div class="category">
-                    <div class="category-icon">⌚</div>
-                    <span>Smartwatches</span>
-                </div>
-                <div class="category">
-                    <div class="category-icon">🎮</div>
-                    <span>Games</span>
-                </div>
-                <div class="category">
-                    <div class="category-icon">📸</div>
-                    <span>Câmeras</span>
+            <div class="categories-controls">
+                <button class="category-scroll" type="button" data-category-scroll="-1" aria-label="Ver categorias anteriores">‹</button>
+                <button class="category-scroll" type="button" data-category-scroll="1" aria-label="Ver próximas categorias">›</button>
+            </div>
+            <div class="categories-viewport" id="categoriesViewport">
+                <div class="categories" role="group" aria-label="Categorias de produtos">
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">💻</div>
+                        <span>Notebooks</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">📱</div>
+                        <span>Celulares</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">🎧</div>
+                        <span>Fones de Ouvido</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">🔊</div>
+                        <span>Áudio</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">⌚</div>
+                        <span>Smartwatches</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">🎮</div>
+                        <span>Games</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">📸</div>
+                        <span>Câmeras</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">🏠</div>
+                        <span>Casa inteligente</span>
+                    </div>
+                    <div class="category" role="button" tabindex="0" aria-pressed="false">
+                        <div class="category-icon">🖥️</div>
+                        <span>Monitores</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Seção de produtos em destaque -->
-            <section class="section" id="productsSection">
+        <!-- Catálogo interativo com busca, filtros, ordenação, detalhes, favoritos e carrinho. -->
+        <section class="section" id="productsSection">
+                <span id="ofertas"></span>
                 <div class="section-header">
                     <div>
                         <h2>Produtos em destaque</h2>
@@ -202,22 +318,61 @@
                     <button class="filter-chip action" data-filter="todos">Todos</button>
                     <button class="filter-chip" data-filter="Informática">Informática</button>
                     <button class="filter-chip" data-filter="Celulares">Celulares</button>
-                    <button class="filter-chip" data-filter="Áudios">Áudios</button>
+                    <button class="filter-chip" data-filter="Fones de Ouvido">Fones de Ouvido</button>
+                    <button class="filter-chip" data-filter="Áudio">Áudio</button>
                     <button class="filter-chip" data-filter="Smartwatches">Smartwatches</button>
                     <button class="filter-chip" data-filter="Games">Games</button>
                     <button class="filter-chip" data-filter="Câmeras">Câmeras</button>
+                    <button class="filter-chip" data-filter="Casa inteligente">Casa inteligente</button>
+                    <button class="filter-chip" data-filter="Monitores">Monitores</button>
+                </div>
+                <div class="catalog-controls">
+                    <label>
+                        Ordenar por
+                        <select id="productSort">
+                            <option value="featured">Destaques</option>
+                            <option value="price-asc">Menor preço</option>
+                            <option value="price-desc">Maior preço</option>
+                            <option value="name">Nome do produto</option>
+                        </select>
+                    </label>
+                    <label>
+                        Faixa de preço
+                        <select id="productPrice">
+                            <option value="all">Todos os preços</option>
+                            <option value="0-500">Até R$ 500</option>
+                            <option value="500-1500">R$ 500 a R$ 1.500</option>
+                            <option value="1500-3000">R$ 1.500 a R$ 3.000</option>
+                            <option value="3000+">Acima de R$ 3.000</option>
+                        </select>
+                    </label>
+                    <label>
+                        Fabricante
+                        <select id="productBrand">
+                            <option value="all">Todos</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Xiaomi">Xiaomi</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Microsoft">Microsoft</option>
+                            <option value="Sony">Sony</option>
+                            <option value="Canon">Canon</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="JBL">JBL</option>
+                            <option value="GPD">GPD</option>
+                            <option value="UPERFECT">UPERFECT</option>
+                        </select>
+                    </label>
                 </div>
 
                 <p class="results-message" id="resultsMessage" aria-live="polite"></p>
 
                 <div class="products" id="products">
-                    <article class="product" data-id="1">
+                    <article class="product" id="notebooks" data-id="1">
                         <div class="product-image">
                             <span class="discount">-20%</span>
                             <button class="favorite" data-favorite="1" aria-label="Favoritar Notebook">♡</button>
-                            <img src="img/produtos/notebook.svg" alt="Notebook"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">💻</span>
+                            <span class="product-placeholder" aria-hidden="true">💻</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Informática</div>
@@ -228,13 +383,11 @@
                             <button class="add-cart" data-add="1">Adicionar ao Carrinho</button>
                         </div>
                     </article>
-                    <article class="product" data-id="2">
+                    <article class="product" id="celulares" data-id="2">
                         <div class="product-image">
                             <span class="discount">-15%</span>
                             <button class="favorite" data-favorite="2" aria-label="Favoritar Smartphone">♡</button>
-                            <img src="img/produtos/smartphone.svg" alt="Smartphone"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">📱</span>
+                            <span class="product-placeholder" aria-hidden="true">📱</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Celulares</div>
@@ -249,12 +402,10 @@
                         <div class="product-image">
                             <span class="discount">-30%</span>
                             <button class="favorite" data-favorite="3" aria-label="Favoritar Headset">♡</button>
-                            <img src="img/produtos/headset.svg" alt="Headset"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">🎧</span>
+                            <span class="product-placeholder" aria-hidden="true">🎧</span>
                         </div>
                         <div class="product-info">
-                            <div class="product-category">Games</div>
+                            <div class="product-category">Fones de Ouvido</div>
                             <div class="product-name">Headset</div>
                             <div class="rating">★★★★★</div>
                             <div class="price-old">R$ 400,00</div>
@@ -266,12 +417,10 @@
                         <div class="product-image">
                             <span class="discount">-25%</span>
                             <button class="favorite" data-favorite="4" aria-label="Favoritar Smartwatch">♡</button>
-                            <img src="img/produtos/smartwatch.svg" alt="Smartwatch"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">⌚</span>
+                            <span class="product-placeholder" aria-hidden="true">⌚</span>
                         </div>
                         <div class="product-info">
-                            <div class="product-category">Smartwatchs</div>
+                            <div class="product-category">Smartwatches</div>
                             <div class="product-name">Smartwatch</div>
                             <div class="rating">★★★★★</div>
                             <div class="price-old">R$ 700,00</div>
@@ -283,12 +432,10 @@
                         <div class="product-image">
                             <span class="discount">-23%</span>
                             <button class="favorite" data-favorite="5" aria-label="Favoritar Fone de Ouvido">♡</button>
-                            <img src="img/produtos/fone-ouvido.svg" alt="Fone de Ouvido"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">🎧</span>
+                            <span class="product-placeholder" aria-hidden="true">🎧</span>
                         </div>
                         <div class="product-info">
-                            <div class="product-category">Áudio</div>
+                            <div class="product-category">Fones de Ouvido</div>
                             <div class="product-name">Fone de Ouvido</div>
                             <div class="rating">★★★★★</div>
                             <div class="price-old">R$ 229,90</div>
@@ -296,13 +443,11 @@
                             <button class="add-cart" data-add="5">Adicionar ao Carrinho</button>
                         </div>
                     </article>
-                    <article class="product" data-id="6">
+                    <article class="product" id="audio" data-id="6">
                         <div class="product-image">
                             <span class="discount">-23%</span>
                             <button class="favorite" data-favorite="6" aria-label="Favoritar Caixa de Som">♡</button>
-                            <img src="img/produtos/caixa-som.svg" alt="Caixa de Som"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">🔊</span>
+                            <span class="product-placeholder" aria-hidden="true">🔊</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Áudio</div>
@@ -318,9 +463,7 @@
                             <span class="discount">-27%</span>
                             <button class="favorite" data-favorite="7"
                                 aria-label="Favoritar Teclado Mecânico">♡</button>
-                            <img src="img/produtos/teclado-mecanico.svg" alt="Teclado Mecânico"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">⌨️</span>
+                            <span class="product-placeholder" aria-hidden="true">⌨️</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Informática</div>
@@ -335,9 +478,7 @@
                         <div class="product-image">
                             <span class="discount">-12%</span>
                             <button class="favorite" data-favorite="8" aria-label="Favoritar Ipad">♡</button>
-                            <img src="img/produtos/ipad.svg" alt="Ipad"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">📱</span>
+                            <span class="product-placeholder" aria-hidden="true">📱</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Informática</div>
@@ -353,9 +494,7 @@
                             <span class="discount">-13%</span>
                             <button class="favorite" data-favorite="9"
                                 aria-label="Favoritar Câmera Profissional">♡</button>
-                            <img src="img/produtos/camera.svg" alt="Câmera Profissional"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                            <span class="product-plaeholder" style="display:none">📷</span>
+                            <span class="product-placeholder" aria-hidden="true">📷</span>
                         </div>
                         <div class="product-info">
                             <div class="product-category">Câmeras</div>
@@ -366,25 +505,50 @@
                             <button class="add-cart" data-add="9">Adicionar ao Carrinho</button>
                         </div>
                     </article>
-            </section>
+                </div>
+                <p class="photo-credit">
+                    Fotos ilustrativas de eletrônicos: <a href="https://unsplash.com/license" target="_blank" rel="noreferrer">Unsplash License</a>.
+                    Os nomes, preços e condições deste catálogo são demonstrativos.
+                </p>
+        </section>
 
-            <!-- Rastreio -->
+        <dialog class="product-dialog" id="productDialog" aria-labelledby="productDialogTitle">
+            <button class="dialog-close" type="button" aria-label="Fechar detalhes">×</button>
+            <div class="product-dialog-content">
+                <div>
+                    <div class="product-dialog-image" id="productDialogImage"></div>
+                    <div class="product-dialog-gallery" id="productDialogGallery" aria-label="Imagens do produto"></div>
+                </div>
+                <div class="product-dialog-info">
+                    <span class="eyebrow" id="productDialogCategory"></span>
+                    <h2 id="productDialogTitle"></h2>
+                    <p class="rating" id="productDialogRating"></p>
+                    <p id="productDialogDescription"></p>
+                    <ul class="product-dialog-features" id="productDialogFeatures" hidden></ul>
+                    <strong class="product-dialog-price" id="productDialogPrice"></strong>
+                    <p class="delivery-note">Frete grátis para pedidos de demonstração.</p>
+                    <button class="add-cart" id="productDialogAdd" type="button">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </dialog>
+
+            <!-- Consulta local dos códigos de pedidos de demonstração. -->
             <section class="section tracking-section" id="rastreio">
                 <div class="tracking-card">
                     <div>
                         <span class="eyebrow">Acompanhe sua compra</span>
                         <h2>Rastreie seu pedido</h2>
-                        <p>Informe um código de rastreio para consultar o status da entrega.</p>
+                        <p>Consulte o código gerado por um pedido de demonstração registrado neste navegador.</p>
                     </div>
                     <form id="trackingForm" class="tracking-form">
                         <input id="trackingInput" type="text" placeholder="Ex.: NS20260001" autocomplete="off" required>
                         <button class="primary-btn" type="submit">Rastrear pedido</button>
                     </form>
-                    <div class="tracking-result" id="trackingResult" hidden></div>
+                    <div class="tracking-result" id="trackingResult" aria-live="polite" hidden></div>
                 </div>
             </section>
 
-            <!-- Atendimento -->
+            <!-- Central de ajuda com formulário local, FAQ e histórico de protocolos do navegador. -->
              <Section class="section" id="suporte">
                 <div class="section-header">
                     <div>
@@ -396,64 +560,140 @@
                     <button class="support-card" data-support="chat">
                         <span>💬</span>
                         <div>
-                            <h3>Atendimento</h3>
-                            <p>Fale com nosso time de suporte.</p>
+                            <h3>Falar com atendimento</h3>
+                            <p>Registre sua dúvida e consulte o protocolo.</p>
                         </div>
                     </button>
                     <button class="support-card" data-support="troca">
                         <span>↩️</span>
                         <div>
                             <h3>Trocas e devoluções</h3>
-                            <p>Consulte as condições e o processo de troca ou devolução.</p>
+                            <p>Abra uma solicitação sobre troca ou devolução.</p>
                         </div>
                     </button>
                     <button class="support-card" data-support="pagamento">
                         <span>💳</span>
                         <div>
                             <h3>Pagamento</h3>
-                            <p>Ajuda com formas de pagamento.</p>
+                            <p>Consulte dúvidas sobre pagamentos.</p>
                         </div>
                     </button>
                     <button class="support-card" data-support="pedido">
                         <span>📦</span>
                         <div>
                             <h3>Meu pedido</h3>
-                            <p>Consulte informações da compra.</p>
+                            <p>Peça ajuda com pedido ou entrega.</p>
                         </div>
                     </button>
                 </div>
+                <p class="support-notice">
+                    Esta loja é uma demonstração: solicitações e protocolos ficam salvos apenas neste navegador
+                    e não são enviados a uma equipe. Não informe dados de cartão ou senhas.
+                </p>
+                <p class="support-result" id="supportResult" aria-live="polite" role="status" hidden></p>
+
+                <div class="support-layout">
+                    <div class="support-panel">
+                        <h3>Abra uma solicitação</h3>
+                        <p>Descreva sua necessidade para registrar um protocolo local de demonstração.</p>
+                        <form id="supportForm" class="support-form">
+                            <label>
+                                Nome
+                                <input name="name" type="text" autocomplete="name" maxlength="80" required>
+                            </label>
+                            <label>
+                                E-mail para contato
+                                <input name="email" type="email" autocomplete="email" maxlength="120" required>
+                            </label>
+                            <label>
+                                Assunto
+                                <select id="supportTopic" name="topic" required>
+                                    <option value="duvida">Dúvida geral</option>
+                                    <option value="pedido">Pedido e entrega</option>
+                                    <option value="troca">Troca e devolução</option>
+                                    <option value="pagamento">Pagamento</option>
+                                    <option value="produto">Produto</option>
+                                </select>
+                            </label>
+                            <label>
+                                Código do pedido <span>(opcional)</span>
+                                <input name="order" type="text" maxlength="40" placeholder="Ex.: NS20260001">
+                            </label>
+                            <label class="support-message-field">
+                                Como podemos ajudar?
+                                <textarea name="message" rows="5" minlength="10" maxlength="1000" required></textarea>
+                            </label>
+                            <button class="primary-btn" type="submit">Registrar solicitação</button>
+                        </form>
+                    </div>
+
+                    <div class="support-panel">
+                        <h3>Perguntas frequentes</h3>
+                        <label class="support-faq-search">
+                            Buscar respostas
+                            <input id="supportFaqSearch" type="search" placeholder="Ex.: rastreio, pagamento, troca">
+                        </label>
+                        <div class="support-faq">
+                            <details data-benefit-faq="shipping">
+                                <summary>Como acompanho meu pedido?</summary>
+                                <p>Pedidos de demonstração geram um código local. Use a área <a href="#rastreio">Rastrear pedido</a> para consultar o registro neste navegador.</p>
+                            </details>
+                            <details data-benefit-faq="payment">
+                                <summary>Posso pagar com cartão nesta loja?</summary>
+                                <p>Não. Esta demonstração não processa pagamentos nem solicita dados financeiros.</p>
+                            </details>
+                            <details data-benefit-faq="exchange">
+                                <summary>Como solicito uma troca ou devolução?</summary>
+                                <p>Selecione “Troca e devolução” no formulário e registre os detalhes. O protocolo é apenas local e não substitui o contato com uma loja real.</p>
+                            </details>
+                            <details data-benefit-faq="security">
+                                <summary>Esta demonstração processa compras ou guarda dados financeiros?</summary>
+                                <p>Não. A loja não processa pagamentos nem solicita dados de cartão ou senhas. Algumas preferências e registros de demonstração ficam salvos localmente neste navegador.</p>
+                            </details>
+                            <details>
+                                <summary>Alguém da equipe receberá minha mensagem?</summary>
+                                <p>Não. Sem um serviço de backend, a solicitação permanece salva somente neste navegador.</p>
+                            </details>
+                        </div>
+                        <p id="supportFaqEmpty" class="support-empty" hidden>Nenhuma resposta encontrada. Tente outros termos ou registre uma solicitação.</p>
+                    </div>
+                </div>
+
+                <div class="support-history">
+                    <h3>Protocolos neste navegador</h3>
+                    <div id="supportTicketList" class="support-ticket-list" aria-live="polite"></div>
+                </div>
              </Section>
 
-             <!-- Beneficios -->
+             <!-- Atalhos para rastreio, informações de segurança/pagamento e formulário de trocas. -->
              <section class="section benefits-section">
                 <div class="benefits">
-                    <article class="benefit">
+                    <button class="benefit" type="button" data-benefit="shipping">
                         <span>🚚</span>
-                        <h3>Frete rápido</h3>
-                        <p>Entrega rápida e segura para todo o Brasil.</p>
-                    </article>
-                    <article class="benefit">
+                        <h3>Acompanhe seu pedido</h3>
+                        <p>Consulte os pedidos de demonstração registrados neste navegador.</p>
+                    </button>
+                    <button class="benefit" type="button" data-benefit="security">
                         <span>🔒</span>
-                        <h3>Compra segura</h3>
-                        <p>Seus dados protegidos durante a experiência.</p>
-                    </article>
-                    <article class="benefit">
+                        <h3>Privacidade e segurança</h3>
+                        <p>Saiba quais dados são usados nesta demonstração.</p>
+                    </button>
+                    <button class="benefit" type="button" data-benefit="payment">
                         <span>💳</span>
-                        <h3>Pagamento facilitado</h3>
-                        <p>Escolha a forma de pagamento adequado à sua compra.</p>
-                    </article>
-                    <article class="benefit">
+                        <h3>Informações de pagamento</h3>
+                        <p>Veja o que é possível fazer com pagamentos neste protótipo.</p>
+                    </button>
+                    <button class="benefit" type="button" data-benefit="exchange">
                         <span>↩️</span>
-                        <h3>Troca fácil</h3>
-                        <p>Consulte as condições para trocas e devoluções.</p>
-                    </article>
+                        <h3>Ajuda com trocas</h3>
+                        <p>Preencha uma solicitação local de troca ou devolução.</p>
+                    </button>
                 </div>
              </section>
     </main>
-</body>
 
-<footer>
-        <!-- Rodapé da página -->
+    <!-- Rodapé da página -->
+    <footer>
         <div class="footer">
             <div>
                 <h3>New e-Commerce</h3>
@@ -461,14 +701,14 @@
             </div>
             <div>
                 <h3>Empresas</h3>
-                <a href="#inico">Sobre nós</a>
+                <a href="#inicio">Sobre nós</a>
                 <a href="#suporte">Contato</a>
                 <a href="#suporte">Trabalhe conosco</a>
             </div>
             <div>
                 <h3>Atendimento</h3>
                 <a href="#suporte">Central de ajuda</a>
-                <a href="#suporte">Trocas e devoluções</a>
+                <a href="#suporte" data-support="troca">Trocas e devoluções</a>
                 <a href="#rastreio">Rastrear pedido</a>
             </div>
             <div>
@@ -478,12 +718,57 @@
                 <a href="#" data-social="Tiktok">Tiktok</a>
             </div>
         </div>
-        <div class="copyright">© 2026 New e-Commerce — Todos os direitos reservados.</div>      
+        <div class="copyright">
+            <span>© 2026 New e-Commerce — Todos os direitos reservados.</span>
+            <a href="#inicio">Voltar ao início</a>
+        </div>
 </footer>
 
-    <!-- Script JS para o carrossel -->
-    <script src="js/carrossel.js"></script>
-    <script src="js/tema.js"></script>
-    <script src="js/conta.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+
+    <!-- Scripts da página inicial: carrossel, navegação, tema e recursos do catálogo. -->
+    <script src="assets/js/storefront/carrossel.js"></script>
+    <script src="assets/js/shared/navbar.js"></script>
+    <script src="assets/js/shared/tema.js"></script>
+    <script src="assets/js/storefront/index.js"></script>
+    <script src="assets/js/shared/footer.js"></script>
 
 </html>

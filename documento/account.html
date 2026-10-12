@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<!-- Página de conta: cadastro e login pela API do servidor quando configurados. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar - Seu E-commerce</title>
-    <link rel="stylesheet" href="css/account.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="assets/css/pages/account.css">
+    <link rel="stylesheet" href="assets/css/shared/navbar.css">
 
+</head>
 
 <body class="login-body">
 
@@ -18,7 +20,7 @@
             </div>
             <div class="search">
                 <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button id="btnSearch">⌕</button>
+                <button id="btnSearch" type="button" aria-label="Buscar produtos">⌕</button>
             </div>
 
             <div class="header-actions">
@@ -68,14 +70,15 @@
         </nav>
     </header>
 
+    <!-- Formulário de autenticação: as abas alternam entre login e cadastro. -->
     <main class="login-main">
         <div class="login-card">
             <h2>Acesse ou crie sua conta</h2>
 
             <!-- Abas para Alternar entre Login e Criar Conta -->
-            <div class="auth-tabs">
-                <button type="button" class="tab-btn active">Login</button>
-                <button type="button" class="tab-btn">Criar Conta</button>
+            <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true">Login</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false">Criar Conta</button>
                 <div class="tab-indicator"></div>
             </div>
 
@@ -83,22 +86,27 @@
 
                 <div class="input-group" id="name-group">
                     <label for="nome">Nome completo</label>
-                    <input type="text" id="nome" placeholder="Nome completo" autocomplete="off">
+                    <input type="text" id="nome" placeholder="Nome completo" autocomplete="name" maxlength="80">
                 </div>
 
                 <div class="input-group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="E-mail" autocomplete="off">
+                    <input type="email" id="email" placeholder="E-mail" autocomplete="email" required>
                 </div>
 
                 <div class="input-group">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Senha" autocomplete="new-password">
+                    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" minlength="1" maxlength="128" required>
+                </div>
+
+                <div class="input-group" id="password-confirm-group">
+                    <label for="confirmar-senha">Confirme sua senha</label>
+                    <input type="password" id="confirmar-senha" placeholder="Digite a senha novamente" autocomplete="new-password" maxlength="128" disabled>
                 </div>
 
                 <button type="submit" class="btn-submit" id="submit-btn">Entrar</button>
 
-                <!-- BOTÃO DO GOOGLE -->
+                <!-- A integração Google informa que ainda não está configurada. -->
                 <div class="divider"><span>Ou entre com</span></div>
 
                 <button type="button" class="btn-google" id="btn-google">
@@ -119,13 +127,17 @@
                 <div class="auth-footer">
                     <a href="#" id="forgot-link">Esqueceu sua senha?</a>
                 </div>
+                <p id="authMessage" class="auth-message" role="status" aria-live="polite">
+                    As contas são salvas no servidor quando o banco de dados está configurado.
+                </p>
             </form>
         </div>
     </main>
 
-    <script src="js/account.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/tema.js"></script>
+    <!-- Scripts de conta, navegação compartilhada e tema. -->
+    <script src="assets/js/pages/account.js"></script>
+    <script src="assets/js/shared/navbar.js"></script>
+    <script src="assets/js/shared/tema.js"></script>
 </body>
 
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<!-- Página do carrinho: permite revisar itens, alterar quantidades, aplicar cupom e registrar pedido demonstrativo. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho compras - New e-Commerce</title>
 
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="assets/css/shared/navbar.css">
+    <link rel="stylesheet" href="assets/css/pages/cart.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
             <!-- Barra de busca -->
             <div class="search">
                 <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button id="btnSearch" onclick="searchProducts()">⌕</button>
+                <button id="btnSearch" type="button" aria-label="Buscar produtos">⌕</button>
             </div>
 
             <!-- Ações (Perfil, Favoritos, Carrinho) -->
@@ -47,7 +48,7 @@
 
                 <!-- Favoritos -->
                 <a href="favorite.html" style="text-decoration: none;">
-                    <button class="icon-btn" id="btnFavorites" onclick="openFavorites()" title="Favoritos">♡
+                    <button class="icon-btn" id="btnFavorites" title="Favoritos">♡
                         <span class="tooltip"></span>
                     </button>
                 </a>
@@ -99,17 +100,18 @@
 
     <!-- Conteúdo Principal -->
     <main class="cart-container">
+        <!-- O JavaScript substitui o conteúdo inicial pelos itens persistidos no navegador. -->
         <div class="cart-header-title">
             <h1>Seu carrinho de compras</h1>
             <span class="items-count">1 produto selecionado</span>
         </div>
 
         <div class="cart-content">
-            <!-- Lista de Produtos -->
+            <!-- Lista de produtos; os controles de quantidade e remoção são ligados pelo cart.js. -->
             <div class="cart-products-list">
                 <div class="cart-item-card">
                     <div class="item-badge">Destaque New</div>
-                    <img src="img/produtos/celulares/iphone 13 pro max.png" alt="iPhone 13 Pro Max">
+                    <img src="assets/images/products/phones/iphone 13 pro max.png" alt="iPhone 13 Pro Max">
 
                     <div class="item-info">
                         <h3>iPhone 13 Pro Max Apple 128GB</h3>
@@ -136,7 +138,7 @@
                 </div>
             </div>
 
-            <!-- Painel de Finalização -->
+            <!-- Resumo, cupom e finalização simulada; nenhuma cobrança é realizada. -->
             <aside class="checkout-panel">
                 <div class="panel-header">
                     <h2>Resumo do Pedido</h2>
@@ -146,9 +148,11 @@
                 <!-- cupom -->
                 <div class="panel-coupon">
                     <div class="coupon-field-wrapper">
-                        <input type="text" placeholder="Cupom de desconto">
-                        <button type="button">Aplicar</button>
+                        <input id="couponInput" type="text" placeholder="Cupom (NEW10)" aria-label="Cupom de desconto" aria-describedby="couponHint couponMessage" autocomplete="off" maxlength="30">
+                        <button id="applyCoupon" type="button">Aplicar</button>
                     </div>
+                    <p id="couponHint">Use <strong>NEW10</strong> para ganhar 10% de desconto.</p>
+                    <p id="couponMessage" aria-live="polite"></p>
                 </div>
 
                 <!-- Detalhes de Valores -->
@@ -156,6 +160,10 @@
                     <div class="detail-row">
                         <span>Produtos (1)</span>
                         <span>R$ 2.499,00</span>
+                    </div>
+                    <div class="detail-row" id="couponDiscountRow" hidden>
+                        <span>Desconto (NEW10)</span>
+                        <span class="highlight-green"></span>
                     </div>
                     <div class="detail-row">
                         <span>Frete Express</span>
@@ -177,20 +185,27 @@
                 </div>
 
                 <!-- Botão de Ação Premium -->
-                <a href="#" class="btn-proceed">
+                <button type="button" class="btn-proceed" disabled>
                     <span>Finalizar com Segurança</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                </button>
                 <a href="index.html" class="btn-back-shopping">Continuar Comprando</a>
             </aside>
         </div>
     </main>
 
+    <dialog id="checkoutDialog" class="checkout-dialog">
+        <h2>Pedido de demonstração</h2>
+        <p id="checkoutMessage" aria-live="polite"></p>
+        <button id="checkoutClose" type="button">Fechar</button>
+    </dialog>
+
     <footer></footer>
 
-    <!-- Script de interatividade do carrinho -->
-    <script src="js/cart.js"></script>
-    <script src="js/tema.js"></script>
+    <!-- Scripts de navegação comum, operações do carrinho e preferência de tema. -->
+    <script src="assets/js/shared/navbar.js"></script>
+    <script src="assets/js/pages/cart.js"></script>
+    <script src="assets/js/shared/tema.js"></script>
 
 </body>
 
