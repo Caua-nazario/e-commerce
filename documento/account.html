@@ -1,82 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<!-- Página de conta: cadastro e login pela API do servidor quando configurados. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar - Seu E-commerce</title>
     <link rel="stylesheet" href="assets/css/pages/account.css">
     <link rel="stylesheet" href="assets/css/shared/navbar.css">
+    <style>
+        .login-card {
+            position: relative;
+            background: #111827;
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
 
+        .login-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 17px;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(45, 212, 191, 0.4),
+                    transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .auth-tabs {
+            position: relative;
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #9ca3af;
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+        }
+
+        .tab-indicator {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            background: linear-gradient(135deg, #06b6d4, #0d9488);
+            border-radius: 7px;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
+        }
+
+        .auth-tabs[data-active="1"] .tab-indicator {
+            transform: translateX(100%);
+        }
+
+        .role-selector {
+            display: none;
+            margin-bottom: 16px;
+        }
+
+        .role-selector label.role-title {
+            display: block;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .role-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .role-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .role-option input {
+            margin-right: 8px;
+            accent-color: #06b6d4;
+        }
+
+        .role-option:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+    </style>
 </head>
 
 <body class="login-body">
 
     <header>
-        <div class="header">
-            <div class="logo">
-                New <span>e-Commerce</span>
-            </div>
-            <div class="search">
-                <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button id="btnSearch" type="button" aria-label="Buscar produtos">⌕</button>
-            </div>
-
-            <div class="header-actions">
-                <a href="index.html" class="icon-btn" title="Home">⌂</a>
-                
-                <a href="favorite.html">
-                    <button class="icon-btn" title="Favoritos">♡</button>
-                </a>
-
-                <a href="cart.html">
-                    <button class="icon-btn" title="Carrinho de compras">
-                        🛒 <span class="cart-count">0</span>
-                    </button>
-                </a>
-                <!-- Tema -->
-                <input type="checkbox" id="tema-toggle">
-
-                <label for="tema-toggle" class="theme-btn">
-                    <span class="sol">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-sun" viewBox="0 0 16 16">
-                            <path
-                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-                        </svg>
-                    </span>
-                    <span class="lua">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-moon-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-                        </svg>
-                    </span>
-                </label>
-            </div>
-        </div>
-        <nav class="primary">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#categorias">Categorias</a></li>
-                <li><a href="#celulares">Celulares</a></li>
-                <li><a href="#notebooks">Notebooks</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#audio">Áudio</a></li>
-                <li><a href="#ofertas">Ofertas</a></li>
-                <li><a href="#suporte">Suporte</a></li>
-            </ul>
-        </nav>
+       
     </header>
 
-    <!-- Formulário de autenticação: as abas alternam entre login e cadastro. -->
     <main class="login-main">
         <div class="login-card">
             <h2>Acesse ou crie sua conta</h2>
 
-            <!-- Abas para Alternar entre Login e Criar Conta -->
-            <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+            <div class="auth-tabs" role="tablist" aria-label="Acesso à conta" data-active="0">
                 <button type="button" class="tab-btn active" role="tab" aria-selected="true">Login</button>
                 <button type="button" class="tab-btn" role="tab" aria-selected="false">Criar Conta</button>
                 <div class="tab-indicator"></div>
@@ -89,6 +146,18 @@
                     <input type="text" id="nome" placeholder="Nome completo" autocomplete="name" maxlength="80">
                 </div>
 
+                <div class="role-selector" id="role-group">
+                    <label class="role-title">Tipo de Conta</label>
+                    <div class="role-options">
+                        <label class="role-option">
+                            <input type="radio" name="userRole" value="client" checked> Sou Comprador
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="userRole" value="vendor"> Quero Vender
+                        </label>
+                    </div>
+                </div>
+
                 <div class="input-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" placeholder="E-mail" autocomplete="email" required>
@@ -96,21 +165,21 @@
 
                 <div class="input-group">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" minlength="1" maxlength="128" required>
+                    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" minlength="1"
+                        maxlength="128" required>
                 </div>
 
                 <div class="input-group" id="password-confirm-group">
                     <label for="confirmar-senha">Confirme sua senha</label>
-                    <input type="password" id="confirmar-senha" placeholder="Digite a senha novamente" autocomplete="new-password" maxlength="128" disabled>
+                    <input type="password" id="confirmar-senha" placeholder="Digite a senha novamente"
+                        autocomplete="new-password" maxlength="128" disabled>
                 </div>
 
                 <button type="submit" class="btn-submit" id="submit-btn">Entrar</button>
 
-                <!-- A integração Google informa que ainda não está configurada. -->
                 <div class="divider"><span>Ou entre com</span></div>
 
                 <button type="button" class="btn-google" id="btn-google">
-                    <!-- Ícone do Google -->
                     <svg viewBox="0 0 24 24" width="18" height="18">
                         <path fill="#4285F4"
                             d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" />
@@ -134,12 +203,60 @@
         </div>
     </main>
 
-    <!-- Scripts de conta, navegação compartilhada e tema. -->
     <script src="assets/js/pages/account.js"></script>
     <script src="assets/js/shared/navbar.js"></script>
     <script src="assets/js/shared/tema.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const card = document.querySelector(".login-card");
+            const tabsContainer = document.querySelector(".auth-tabs");
+            const tabBtns = document.querySelectorAll(".tab-btn");
+            const nameGroup = document.getElementById("name-group");
+            const roleGroup = document.getElementById("role-group");
+            const confirmPasswordGroup = document.getElementById("password-confirm-group");
+            const confirmInput = document.getElementById("confirmar-senha");
+            const submitBtn = document.getElementById("submit-btn");
+
+            if (card) {
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                });
+            }
+
+            tabBtns.forEach((btn, index) => {
+                btn.addEventListener("click", () => {
+                    tabBtns.forEach(b => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-selected", "false");
+                    });
+
+                    btn.classList.add("active");
+                    btn.setAttribute("aria-selected", "true");
+
+                    tabsContainer.setAttribute("data-active", index);
+
+                    if (index === 0) {
+                        if (nameGroup) nameGroup.style.display = "none";
+                        if (roleGroup) roleGroup.style.display = "none";
+                        if (confirmPasswordGroup) confirmPasswordGroup.style.display = "none";
+                        if (confirmInput) confirmInput.disabled = true;
+                        if (submitBtn) submitBtn.textContent = "Entrar";
+                    } else {
+                        if (nameGroup) nameGroup.style.display = "block";
+                        if (roleGroup) roleGroup.style.display = "block";
+                        if (confirmPasswordGroup) confirmPasswordGroup.style.display = "block";
+                        if (confirmInput) confirmInput.disabled = false;
+                        if (submitBtn) submitBtn.textContent = "Criar Conta";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-<!-- o html eu fiz , o css com ajuda da IA pra algumas coisas e o js foi todo feito por IA , mais com bastante atencao-->
