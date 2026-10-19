@@ -1,161 +1,197 @@
-/* Estilos compartilhados do cabeçalho, busca, navegação e controle do tema. */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
     background: #f6f7fb;
     color: #171717;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Header */
+body.modo-escuro {
+    background: #0b1120;
+    color: #f1f5f9;
+}
 
-header{
-    background: #111827;
+header {
+    background: #0b1120;
     color: #ffffff;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Header Styles */
-
-.header{
+.header {
     max-width: 1250px;
     margin: auto;
     height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 24px;
     padding: 0 20px;
 }
 
-.logo{
-    font-size: 25px;
+.logo {
+    font-size: 22px;
     font-weight: 800;
     color: white;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.logo span{
+.logo span {
     color: #3394c5;
 }
 
-.search{
+/* Barra de busca mais equilibrada e limpa */
+.search {
     flex: 1;
     display: flex;
-    max-width: 600px;
+    max-width: 520px;
     background: #fff;
     border-radius: 999px;
     overflow: hidden;
-    margin: 0 16px;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.search input{
+.search input {
     flex: 1;
     border: none;
     outline: none;
-    padding: 14px 18px;
-    font-size: 1rem;
+    padding: 11px 18px;
+    font-size: 0.9rem;
+    color: #1e293b;
 }
 
-.search input:focus{
-    border-color: #3394c5;
-    box-shadow: 0 0 0 3px rgba(108,53,255,.1);
+.search input::placeholder {
+    color: #94a3b8;
 }
 
-.search button{
+.search button {
     border: none;
     background: transparent !important;
-    color: gray;
-    padding: 0 18px;
-    font-size: 1.2rem;
+    color: #64748b;
+    padding: 0 16px;
+    font-size: 1rem;
     cursor: pointer;
-    }
-
-.search button::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 22px;
-    background: gray;
 }
 
-.header-actions{
+.header-actions {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    align-items: center;
 }
 
 .icon-btn {
-    width: 45px;
-    height: 45px;
-    border: 1px solid #eeeeee;
-    background: white;
-    border-radius: 11px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #ffffff;
+    color: #0f172a;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     position: relative;
-    transition: .2s;
-    
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.icon-btn:hover{
-    background: #f2efff;
+.icon-btn:hover {
+    background: #f8fafc;
+    transform: translateY(-1px);
 }
 
-.cart-count{
+.cart-count {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: -4px;
+    right: -4px;
     background: #ff3d71;
     color: white;
-    font-size: 11px;
-    width: 20px;
-    height: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Navbar Styles */
-
-.primary{
-    background: #0f172a;
+/* Esconde o checkbox */
+#tema-toggle {
+    display: none;
 }
 
+/* Botão de Tema Minimalista Único */
+.theme-btn {
+    width: 40px;
+    height: 40px;
+    background: #172033;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: #1e293b;
+}
+
+.sol, .lua {
+    display: none;
+}
+
+/* Alternância limpa do ícone único */
+body:not(.modo-escuro) .sol {
+    display: flex;
+}
+
+body.modo-escuro .lua {
+    display: flex;
+}
+
+/* Barra do Menu Principal */
+
+.primary {
+    background: #0b1120;
+}
 
 .primary > ul {
-    max-width: 1300px;
+    max-width: 1250px;
     margin: auto;
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 40px;
-    padding: 14px;
-}
-
-.primary > ul > li{
-    display: list-item;
-    unicode-bidi: isolate;
+    gap: 36px;
+    padding: 10px 20px;
 }
 
 .primary a,
 .nav-category-toggle {
-    color: white;
+    color: #cbd5e1;
     text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.primary a:hover,
+.nav-category-toggle:hover {
+    color: #ffffff;
 }
 
 .nav-category-menu {
@@ -173,14 +209,8 @@ header{
 }
 
 .nav-category-toggle span {
-    color: #8dcbea;
-    font-size: 17px;
-}
-
-.nav-category-toggle:focus-visible,
-.nav-category-panel a:focus-visible {
-    outline: 2px solid #8dcbea;
-    outline-offset: 4px;
+    color: #3394c5;
+    font-size: 15px;
 }
 
 .nav-category-panel,
@@ -191,7 +221,7 @@ header{
 .nav-category-panel:not([hidden]) {
     position: absolute;
     z-index: 1100;
-    top: calc(100% + 18px);
+    top: calc(100% + 14px);
     left: 50%;
     display: grid;
     width: min(1000px, calc(100vw - 32px));
@@ -233,98 +263,13 @@ header{
 
 .nav-category-group a:hover,
 .nav-category-all:hover {
-    color: #1479a5;
-}
-
-.nav-category-group a::after,
-.nav-category-all::after {
-    display: none;
+    color: #3394c5;
 }
 
 .nav-category-all {
     align-self: end;
-    color: #1479a5;
+    color: #3394c5;
     font-weight: 700;
-}
-
-body {
-    background: #f6f7fb;
-    color: #171717;
-    transition: background 0.3s, color 0.3s;
-}
-
-body.modo-escuro {
-    background: #0b1120;
-    color: #f1f5f9;
-}
-
-/* Botão do Tema */
-
-#tema-toggle {
-    display: none;
-}
-
-.theme-btn {
-    width: 45px;
-    height: 45px;
-    border: none;
-    background: transparent;
-    border-radius: 11px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-    font-size: 18px;
-    
-    transition: 0.3s;
-}
-
-/* Ícones do Sol e da Lua */
-
-.theme-btn svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-.sol {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lua {
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-
-body.modo-escuro .theme-btn {
-    background: transparent;
-    border: none;
-    color: white;
-}
-
-/* Troca entre Sol e Lua */
-
-body.modo-escuro .sol {
-    display: none;
-}
-
-body.modo-escuro .lua {
-    display: flex;
-}
-
-/* Header e Navbar no modo escuro */
-
-body.modo-escuro header{
-    background: #0b1120;
-}
-
-body.modo-escuro .primary{
-    background: #0b1120;
 }
 
 .primary > ul > li > a::after {
@@ -336,14 +281,13 @@ body.modo-escuro .primary{
     transition: width 0.3s;
 }
 
-/*visibilidade da barra de sublinhado */
 .primary > ul > li > a:hover::after {
     width: 100%;
 }
 
 @media (max-width: 900px) {
     .primary > ul {
-        gap: 22px;
+        gap: 20px;
     }
 
     .nav-category-panel:not([hidden]) {
@@ -354,20 +298,8 @@ body.modo-escuro .primary{
 @media (max-width: 600px) {
     .primary > ul {
         justify-content: flex-start;
-        gap: 20px;
+        gap: 16px;
         overflow-x: auto;
         white-space: nowrap;
-    }
-
-    .nav-category-panel:not([hidden]) {
-        position: fixed;
-        top: 126px;
-        left: 12px;
-        width: calc(100vw - 24px);
-        max-height: calc(100vh - 145px);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding: 18px;
-        transform: none;
-        white-space: normal;
     }
 }
