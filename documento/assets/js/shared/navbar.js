@@ -79,16 +79,30 @@
 
     function initializeThemeToggle() {
         const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-        
-        if (savedTheme === "dark") {
+        const themeBtn = document.querySelector(".theme-btn");
+
+        const updateIcon = (isDark) => {
+            if (!themeBtn) return;
+            if (isDark) {
+                themeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+            } else {
+                themeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><path d="M12 18a6 6 0 0 0 0-12v12z" fill="#ffffff"/><circle cx="12" cy="12" r="6"/></svg>`;
+            }
+        };
+
+        const isDarkTheme = savedTheme === "dark";
+        if (isDarkTheme) {
             document.body.classList.add("modo-escuro");
+            updateIcon(true);
+        } else {
+            updateIcon(false);
         }
 
-        const themeBtn = document.querySelector(".theme-btn");
         if (themeBtn) {
             themeBtn.addEventListener("click", () => {
                 const isDark = document.body.classList.toggle("modo-escuro");
                 localStorage.setItem(THEME_STORAGE_KEY, isDark ? "dark" : "light");
+                updateIcon(isDark);
             });
         }
     }
@@ -96,7 +110,6 @@
     function initializeSharedNavigation() {
         const searchButton = document.getElementById("btnSearch");
         const searchInput = document.getElementById("searchInput");
-        const primaryNavigation = document.querySelector(".primary");
 
         initializeCategoryMenu();
         initializeThemeToggle();

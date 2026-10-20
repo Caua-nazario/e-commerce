@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <!-- Página inicial: reúne banners, categorias, catálogo, rastreio e atendimento. -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +16,9 @@
     <link rel="stylesheet" href="assets/css/pages/account.css">
     <link rel="stylesheet" href="assets/css/storefront/atendimento.css">
     <link rel="stylesheet" href="assets/css/shared/rodapé.css">
+    <link rel="stylesheet" href="assets/css/shared/dashboard.css">
 
-    <!-- Favicon será adicionado aqui futuramente -->
+   <!-- favicon sera adicionmado aqui -->
 </head>
 
 <body>
@@ -31,7 +33,8 @@
             <!-- Slide 1 -->
             <article class="slide ativo">
                 <a href="#" class="slide-link">
-                    <img src="assets/images/banners/Banner Exclusivo.png" alt="Seleção de ofertas em produtos eletrônicos">
+                    <img src="assets/images/banners/Banner Exclusivo.png"
+                        alt="Seleção de ofertas em produtos eletrônicos">
                 </a>
             </article>
 
@@ -112,8 +115,10 @@
                 <a href="#">Ver todas</a>
             </div>
             <div class="categories-controls">
-                <button class="category-scroll" type="button" data-category-scroll="-1" aria-label="Ver categorias anteriores">‹</button>
-                <button class="category-scroll" type="button" data-category-scroll="1" aria-label="Ver próximas categorias">›</button>
+                <button class="category-scroll" type="button" data-category-scroll="-1"
+                    aria-label="Ver categorias anteriores">‹</button>
+                <button class="category-scroll" type="button" data-category-scroll="1"
+                    aria-label="Ver próximas categorias">›</button>
             </div>
             <div class="categories-viewport" id="categoriesViewport">
                 <div class="categories" role="group" aria-label="Categorias de produtos">
@@ -159,209 +164,208 @@
 
         <!-- Catálogo interativo com busca, filtros, ordenação, detalhes, favoritos e carrinho. -->
         <section class="section" id="productsSection">
-                <span id="ofertas"></span>
-                <div class="section-header">
-                    <div>
-                        <h2>Produtos em destaque</h2>
+            <span id="ofertas"></span>
+            <div class="section-header">
+                <div>
+                    <h2>Produtos em destaque</h2>
+                </div>
+                <a href="#">Ver todos →</a>
+            </div>
+            <div class="filter-row">
+                <button class="filter-chip action" data-filter="todos">Todos</button>
+                <button class="filter-chip" data-filter="Informática">Informática</button>
+                <button class="filter-chip" data-filter="Celulares">Celulares</button>
+                <button class="filter-chip" data-filter="Fones de Ouvido">Fones de Ouvido</button>
+                <button class="filter-chip" data-filter="Áudio">Áudio</button>
+                <button class="filter-chip" data-filter="Smartwatches">Smartwatches</button>
+                <button class="filter-chip" data-filter="Games">Games</button>
+                <button class="filter-chip" data-filter="Câmeras">Câmeras</button>
+                <button class="filter-chip" data-filter="Casa inteligente">Casa inteligente</button>
+                <button class="filter-chip" data-filter="Monitores">Monitores</button>
+            </div>
+            <div class="catalog-controls">
+                <label>
+                    Ordenar por
+                    <select id="productSort">
+                        <option value="featured">Destaques</option>
+                        <option value="price-asc">Menor preço</option>
+                        <option value="price-desc">Maior preço</option>
+                        <option value="name">Nome do produto</option>
+                    </select>
+                </label>
+                <label>
+                    Faixa de preço
+                    <select id="productPrice">
+                        <option value="all">Todos os preços</option>
+                        <option value="0-500">Até R$ 500</option>
+                        <option value="500-1500">R$ 500 a R$ 1.500</option>
+                        <option value="1500-3000">R$ 1.500 a R$ 3.000</option>
+                        <option value="3000+">Acima de R$ 3.000</option>
+                    </select>
+                </label>
+                <label>
+                    Fabricante
+                    <select id="productBrand">
+                        <option value="all">Todos</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Motorola">Motorola</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Microsoft">Microsoft</option>
+                        <option value="Sony">Sony</option>
+                        <option value="Canon">Canon</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="JBL">JBL</option>
+                        <option value="GPD">GPD</option>
+                        <option value="UPERFECT">UPERFECT</option>
+                    </select>
+                </label>
+            </div>
+
+            <p class="results-message" id="resultsMessage" aria-live="polite"></p>
+
+            <div class="products" id="products">
+                <article class="product" id="notebooks" data-id="1">
+                    <div class="product-image">
+                        <span class="discount">-20%</span>
+                        <button class="favorite" data-favorite="1" aria-label="Favoritar Notebook">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">💻</span>
                     </div>
-                    <a href="#">Ver todos →</a>
-                </div>
-                <div class="filter-row">
-                    <button class="filter-chip action" data-filter="todos">Todos</button>
-                    <button class="filter-chip" data-filter="Informática">Informática</button>
-                    <button class="filter-chip" data-filter="Celulares">Celulares</button>
-                    <button class="filter-chip" data-filter="Fones de Ouvido">Fones de Ouvido</button>
-                    <button class="filter-chip" data-filter="Áudio">Áudio</button>
-                    <button class="filter-chip" data-filter="Smartwatches">Smartwatches</button>
-                    <button class="filter-chip" data-filter="Games">Games</button>
-                    <button class="filter-chip" data-filter="Câmeras">Câmeras</button>
-                    <button class="filter-chip" data-filter="Casa inteligente">Casa inteligente</button>
-                    <button class="filter-chip" data-filter="Monitores">Monitores</button>
-                </div>
-                <div class="catalog-controls">
-                    <label>
-                        Ordenar por
-                        <select id="productSort">
-                            <option value="featured">Destaques</option>
-                            <option value="price-asc">Menor preço</option>
-                            <option value="price-desc">Maior preço</option>
-                            <option value="name">Nome do produto</option>
-                        </select>
-                    </label>
-                    <label>
-                        Faixa de preço
-                        <select id="productPrice">
-                            <option value="all">Todos os preços</option>
-                            <option value="0-500">Até R$ 500</option>
-                            <option value="500-1500">R$ 500 a R$ 1.500</option>
-                            <option value="1500-3000">R$ 1.500 a R$ 3.000</option>
-                            <option value="3000+">Acima de R$ 3.000</option>
-                        </select>
-                    </label>
-                    <label>
-                        Fabricante
-                        <select id="productBrand">
-                            <option value="all">Todos</option>
-                            <option value="Samsung">Samsung</option>
-                            <option value="Motorola">Motorola</option>
-                            <option value="Xiaomi">Xiaomi</option>
-                            <option value="Apple">Apple</option>
-                            <option value="Microsoft">Microsoft</option>
-                            <option value="Sony">Sony</option>
-                            <option value="Canon">Canon</option>
-                            <option value="Amazon">Amazon</option>
-                            <option value="JBL">JBL</option>
-                            <option value="GPD">GPD</option>
-                            <option value="UPERFECT">UPERFECT</option>
-                        </select>
-                    </label>
-                </div>
-
-                <p class="results-message" id="resultsMessage" aria-live="polite"></p>
-
-                <div class="products" id="products">
-                    <article class="product" id="notebooks" data-id="1">
-                        <div class="product-image">
-                            <span class="discount">-20%</span>
-                            <button class="favorite" data-favorite="1" aria-label="Favoritar Notebook">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">💻</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Informática</div>
-                            <div class="product-name">Notebook</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 5.999,90</div>
-                            <div class="price">R$ 4.799,90</div>
-                            <button class="add-cart" data-add="1">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" id="celulares" data-id="2">
-                        <div class="product-image">
-                            <span class="discount">-15%</span>
-                            <button class="favorite" data-favorite="2" aria-label="Favoritar Smartphone">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">📱</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Celulares</div>
-                            <div class="product-name">Smartphone</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 2.999,90</div>
-                            <div class="price">R$ 2.549,90</div>
-                            <button class="add-cart" data-add="2">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="3">
-                        <div class="product-image">
-                            <span class="discount">-30%</span>
-                            <button class="favorite" data-favorite="3" aria-label="Favoritar Headset">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">🎧</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Fones de Ouvido</div>
-                            <div class="product-name">Headset</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 400,00</div>
-                            <div class="price">R$ 280,00</div>
-                            <button class="add-cart" data-add="3">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="4">
-                        <div class="product-image">
-                            <span class="discount">-25%</span>
-                            <button class="favorite" data-favorite="4" aria-label="Favoritar Smartwatch">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">⌚</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Smartwatches</div>
-                            <div class="product-name">Smartwatch</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 700,00</div>
-                            <div class="price">R$ 525,00</div>
-                            <button class="add-cart" data-add="4">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="5">
-                        <div class="product-image">
-                            <span class="discount">-23%</span>
-                            <button class="favorite" data-favorite="5" aria-label="Favoritar Fone de Ouvido">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">🎧</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Fones de Ouvido</div>
-                            <div class="product-name">Fone de Ouvido</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 229,90</div>
-                            <div class="price">R$ 179,90</div>
-                            <button class="add-cart" data-add="5">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" id="audio" data-id="6">
-                        <div class="product-image">
-                            <span class="discount">-23%</span>
-                            <button class="favorite" data-favorite="6" aria-label="Favoritar Caixa de Som">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">🔊</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Áudio</div>
-                            <div class="product-name">Caixa de Som</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 649,90</div>
-                            <div class="price">R$ 499,90</div>
-                            <button class="add-cart" data-add="6">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="7">
-                        <div class="product-image">
-                            <span class="discount">-27%</span>
-                            <button class="favorite" data-favorite="7"
-                                aria-label="Favoritar Teclado Mecânico">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">⌨️</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Informática</div>
-                            <div class="product-name">Teclado Mecânico</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 399,90</div>
-                            <div class="price">R$ 299,90</div>
-                            <button class="add-cart" data-add="7">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="8">
-                        <div class="product-image">
-                            <span class="discount">-12%</span>
-                            <button class="favorite" data-favorite="8" aria-label="Favoritar Ipad">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">📱</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Informática</div>
-                            <div class="product-name">Ipad</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 2.499,90</div>
-                            <div class="price">R$ 2.199,90</div>
-                            <button class="add-cart" data-add="8">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                    <article class="product" data-id="9">
-                        <div class="product-image">
-                            <span class="discount">-13%</span>
-                            <button class="favorite" data-favorite="9"
-                                aria-label="Favoritar Câmera Profissional">♡</button>
-                            <span class="product-placeholder" aria-hidden="true">📷</span>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Câmeras</div>
-                            <div class="product-name">Câmera Profissional</div>
-                            <div class="rating">★★★★★</div>
-                            <div class="price-old">R$ 4.499,90</div>
-                            <div class="price">R$ 3.899,90</div>
-                            <button class="add-cart" data-add="9">Adicionar ao Carrinho</button>
-                        </div>
-                    </article>
-                </div>
-                <p class="photo-credit">
-                    Fotos ilustrativas de eletrônicos: <a href="https://unsplash.com/license" target="_blank" rel="noreferrer">Unsplash License</a>.
-                    Os nomes, preços e condições deste catálogo são demonstrativos.
-                </p>
+                    <div class="product-info">
+                        <div class="product-category">Informática</div>
+                        <div class="product-name">Notebook</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 5.999,90</div>
+                        <div class="price">R$ 4.799,90</div>
+                        <button class="add-cart" data-add="1">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" id="celulares" data-id="2">
+                    <div class="product-image">
+                        <span class="discount">-15%</span>
+                        <button class="favorite" data-favorite="2" aria-label="Favoritar Smartphone">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">📱</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Celulares</div>
+                        <div class="product-name">Smartphone</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 2.999,90</div>
+                        <div class="price">R$ 2.549,90</div>
+                        <button class="add-cart" data-add="2">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="3">
+                    <div class="product-image">
+                        <span class="discount">-30%</span>
+                        <button class="favorite" data-favorite="3" aria-label="Favoritar Headset">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">🎧</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Fones de Ouvido</div>
+                        <div class="product-name">Headset</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 400,00</div>
+                        <div class="price">R$ 280,00</div>
+                        <button class="add-cart" data-add="3">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="4">
+                    <div class="product-image">
+                        <span class="discount">-25%</span>
+                        <button class="favorite" data-favorite="4" aria-label="Favoritar Smartwatch">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">⌚</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Smartwatches</div>
+                        <div class="product-name">Smartwatch</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 700,00</div>
+                        <div class="price">R$ 525,00</div>
+                        <button class="add-cart" data-add="4">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="5">
+                    <div class="product-image">
+                        <span class="discount">-23%</span>
+                        <button class="favorite" data-favorite="5" aria-label="Favoritar Fone de Ouvido">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">🎧</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Fones de Ouvido</div>
+                        <div class="product-name">Fone de Ouvido</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 229,90</div>
+                        <div class="price">R$ 179,90</div>
+                        <button class="add-cart" data-add="5">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" id="audio" data-id="6">
+                    <div class="product-image">
+                        <span class="discount">-23%</span>
+                        <button class="favorite" data-favorite="6" aria-label="Favoritar Caixa de Som">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">🔊</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Áudio</div>
+                        <div class="product-name">Caixa de Som</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 649,90</div>
+                        <div class="price">R$ 499,90</div>
+                        <button class="add-cart" data-add="6">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="7">
+                    <div class="product-image">
+                        <span class="discount">-27%</span>
+                        <button class="favorite" data-favorite="7" aria-label="Favoritar Teclado Mecânico">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">⌨️</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Informática</div>
+                        <div class="product-name">Teclado Mecânico</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 399,90</div>
+                        <div class="price">R$ 299,90</div>
+                        <button class="add-cart" data-add="7">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="8">
+                    <div class="product-image">
+                        <span class="discount">-12%</span>
+                        <button class="favorite" data-favorite="8" aria-label="Favoritar Ipad">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">📱</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Informática</div>
+                        <div class="product-name">Ipad</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 2.499,90</div>
+                        <div class="price">R$ 2.199,90</div>
+                        <button class="add-cart" data-add="8">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+                <article class="product" data-id="9">
+                    <div class="product-image">
+                        <span class="discount">-13%</span>
+                        <button class="favorite" data-favorite="9" aria-label="Favoritar Câmera Profissional">♡</button>
+                        <span class="product-placeholder" aria-hidden="true">📷</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Câmeras</div>
+                        <div class="product-name">Câmera Profissional</div>
+                        <div class="rating">★★★★★</div>
+                        <div class="price-old">R$ 4.499,90</div>
+                        <div class="price">R$ 3.899,90</div>
+                        <button class="add-cart" data-add="9">Adicionar ao Carrinho</button>
+                    </div>
+                </article>
+            </div>
+            <p class="photo-credit">
+                Fotos ilustrativas de eletrônicos: <a href="https://unsplash.com/license" target="_blank"
+                    rel="noreferrer">Unsplash License</a>.
+                Os nomes, preços e condições deste catálogo são demonstrativos.
+            </p>
         </section>
 
         <dialog class="product-dialog" id="productDialog" aria-labelledby="productDialogTitle">
@@ -384,164 +388,169 @@
             </div>
         </dialog>
 
-            <!-- Consulta local dos códigos de pedidos de demonstração. -->
-            <section class="section tracking-section" id="rastreio">
-                <div class="tracking-card">
+        <!-- Consulta local dos códigos de pedidos de demonstração. -->
+        <section class="section tracking-section" id="rastreio">
+            <div class="tracking-card">
+                <div>
+                    <span class="eyebrow">Acompanhe sua compra</span>
+                    <h2>Rastreie seu pedido</h2>
+                    <p>Consulte o código gerado por um pedido de demonstração registrado neste navegador.</p>
+                </div>
+                <form id="trackingForm" class="tracking-form">
+                    <input id="trackingInput" type="text" placeholder="Ex.: NS20260001" autocomplete="off" required>
+                    <button class="primary-btn" type="submit">Rastrear pedido</button>
+                </form>
+                <div class="tracking-result" id="trackingResult" aria-live="polite" hidden></div>
+            </div>
+        </section>
+
+        <!-- Central de ajuda com formulário local, FAQ e histórico de protocolos do navegador. -->
+        <Section class="section" id="suporte">
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">Atendimento</span>
+                    <h2>Como podemos ajudar?</h2>
+                </div>
+            </div>
+            <div class="support-grid">
+                <button class="support-card" data-support="chat">
+                    <span>💬</span>
                     <div>
-                        <span class="eyebrow">Acompanhe sua compra</span>
-                        <h2>Rastreie seu pedido</h2>
-                        <p>Consulte o código gerado por um pedido de demonstração registrado neste navegador.</p>
+                        <h3>Falar com atendimento</h3>
+                        <p>Registre sua dúvida e consulte o protocolo.</p>
                     </div>
-                    <form id="trackingForm" class="tracking-form">
-                        <input id="trackingInput" type="text" placeholder="Ex.: NS20260001" autocomplete="off" required>
-                        <button class="primary-btn" type="submit">Rastrear pedido</button>
-                    </form>
-                    <div class="tracking-result" id="trackingResult" aria-live="polite" hidden></div>
-                </div>
-            </section>
-
-            <!-- Central de ajuda com formulário local, FAQ e histórico de protocolos do navegador. -->
-             <Section class="section" id="suporte">
-                <div class="section-header">
+                </button>
+                <button class="support-card" data-support="troca">
+                    <span>↩️</span>
                     <div>
-                        <span class="eyebrow">Atendimento</span>
-                        <h2>Como podemos ajudar?</h2>
+                        <h3>Trocas e devoluções</h3>
+                        <p>Abra uma solicitação sobre troca ou devolução.</p>
                     </div>
-                </div>
-                <div class="support-grid">
-                    <button class="support-card" data-support="chat">
-                        <span>💬</span>
-                        <div>
-                            <h3>Falar com atendimento</h3>
-                            <p>Registre sua dúvida e consulte o protocolo.</p>
-                        </div>
-                    </button>
-                    <button class="support-card" data-support="troca">
-                        <span>↩️</span>
-                        <div>
-                            <h3>Trocas e devoluções</h3>
-                            <p>Abra uma solicitação sobre troca ou devolução.</p>
-                        </div>
-                    </button>
-                    <button class="support-card" data-support="pagamento">
-                        <span>💳</span>
-                        <div>
-                            <h3>Pagamento</h3>
-                            <p>Consulte dúvidas sobre pagamentos.</p>
-                        </div>
-                    </button>
-                    <button class="support-card" data-support="pedido">
-                        <span>📦</span>
-                        <div>
-                            <h3>Meu pedido</h3>
-                            <p>Peça ajuda com pedido ou entrega.</p>
-                        </div>
-                    </button>
-                </div>
-                <p class="support-notice">
-                    Esta loja é uma demonstração: solicitações e protocolos ficam salvos apenas neste navegador
-                    e não são enviados a uma equipe. Não informe dados de cartão ou senhas.
-                </p>
-                <p class="support-result" id="supportResult" aria-live="polite" role="status" hidden></p>
-
-                <div class="support-layout">
-                    <div class="support-panel">
-                        <h3>Abra uma solicitação</h3>
-                        <p>Descreva sua necessidade para registrar um protocolo local de demonstração.</p>
-                        <form id="supportForm" class="support-form">
-                            <label>
-                                Nome
-                                <input name="name" type="text" autocomplete="name" maxlength="80" required>
-                            </label>
-                            <label>
-                                E-mail para contato
-                                <input name="email" type="email" autocomplete="email" maxlength="120" required>
-                            </label>
-                            <label>
-                                Assunto
-                                <select id="supportTopic" name="topic" required>
-                                    <option value="duvida">Dúvida geral</option>
-                                    <option value="pedido">Pedido e entrega</option>
-                                    <option value="troca">Troca e devolução</option>
-                                    <option value="pagamento">Pagamento</option>
-                                    <option value="produto">Produto</option>
-                                </select>
-                            </label>
-                            <label>
-                                Código do pedido <span>(opcional)</span>
-                                <input name="order" type="text" maxlength="40" placeholder="Ex.: NS20260001">
-                            </label>
-                            <label class="support-message-field">
-                                Como podemos ajudar?
-                                <textarea name="message" rows="5" minlength="10" maxlength="1000" required></textarea>
-                            </label>
-                            <button class="primary-btn" type="submit">Registrar solicitação</button>
-                        </form>
+                </button>
+                <button class="support-card" data-support="pagamento">
+                    <span>💳</span>
+                    <div>
+                        <h3>Pagamento</h3>
+                        <p>Consulte dúvidas sobre pagamentos.</p>
                     </div>
+                </button>
+                <button class="support-card" data-support="pedido">
+                    <span>📦</span>
+                    <div>
+                        <h3>Meu pedido</h3>
+                        <p>Peça ajuda com pedido ou entrega.</p>
+                    </div>
+                </button>
+            </div>
+            <p class="support-notice">
+                Esta loja é uma demonstração: solicitações e protocolos ficam salvos apenas neste navegador
+                e não são enviados a uma equipe. Não informe dados de cartão ou senhas.
+            </p>
+            <p class="support-result" id="supportResult" aria-live="polite" role="status" hidden></p>
 
-                    <div class="support-panel">
-                        <h3>Perguntas frequentes</h3>
-                        <label class="support-faq-search">
-                            Buscar respostas
-                            <input id="supportFaqSearch" type="search" placeholder="Ex.: rastreio, pagamento, troca">
+            <div class="support-layout">
+                <div class="support-panel">
+                    <h3>Abra uma solicitação</h3>
+                    <p>Descreva sua necessidade para registrar um protocolo local de demonstração.</p>
+                    <form id="supportForm" class="support-form">
+                        <label>
+                            Nome
+                            <input name="name" type="text" autocomplete="name" maxlength="80" required>
                         </label>
-                        <div class="support-faq">
-                            <details data-benefit-faq="shipping">
-                                <summary>Como acompanho meu pedido?</summary>
-                                <p>Pedidos de demonstração geram um código local. Use a área <a href="#rastreio">Rastrear pedido</a> para consultar o registro neste navegador.</p>
-                            </details>
-                            <details data-benefit-faq="payment">
-                                <summary>Posso pagar com cartão nesta loja?</summary>
-                                <p>Não. Esta demonstração não processa pagamentos nem solicita dados financeiros.</p>
-                            </details>
-                            <details data-benefit-faq="exchange">
-                                <summary>Como solicito uma troca ou devolução?</summary>
-                                <p>Selecione “Troca e devolução” no formulário e registre os detalhes. O protocolo é apenas local e não substitui o contato com uma loja real.</p>
-                            </details>
-                            <details data-benefit-faq="security">
-                                <summary>Esta demonstração processa compras ou guarda dados financeiros?</summary>
-                                <p>Não. A loja não processa pagamentos nem solicita dados de cartão ou senhas. Algumas preferências e registros de demonstração ficam salvos localmente neste navegador.</p>
-                            </details>
-                            <details>
-                                <summary>Alguém da equipe receberá minha mensagem?</summary>
-                                <p>Não. Sem um serviço de backend, a solicitação permanece salva somente neste navegador.</p>
-                            </details>
-                        </div>
-                        <p id="supportFaqEmpty" class="support-empty" hidden>Nenhuma resposta encontrada. Tente outros termos ou registre uma solicitação.</p>
+                        <label>
+                            E-mail para contato
+                            <input name="email" type="email" autocomplete="email" maxlength="120" required>
+                        </label>
+                        <label>
+                            Assunto
+                            <select id="supportTopic" name="topic" required>
+                                <option value="duvida">Dúvida geral</option>
+                                <option value="pedido">Pedido e entrega</option>
+                                <option value="troca">Troca e devolução</option>
+                                <option value="pagamento">Pagamento</option>
+                                <option value="produto">Produto</option>
+                            </select>
+                        </label>
+                        <label>
+                            Código do pedido <span>(opcional)</span>
+                            <input name="order" type="text" maxlength="40" placeholder="Ex.: NS20260001">
+                        </label>
+                        <label class="support-message-field">
+                            Como podemos ajudar?
+                            <textarea name="message" rows="5" minlength="10" maxlength="1000" required></textarea>
+                        </label>
+                        <button class="primary-btn" type="submit">Registrar solicitação</button>
+                    </form>
+                </div>
+
+                <div class="support-panel">
+                    <h3>Perguntas frequentes</h3>
+                    <label class="support-faq-search">
+                        Buscar respostas
+                        <input id="supportFaqSearch" type="search" placeholder="Ex.: rastreio, pagamento, troca">
+                    </label>
+                    <div class="support-faq">
+                        <details data-benefit-faq="shipping">
+                            <summary>Como acompanho meu pedido?</summary>
+                            <p>Pedidos de demonstração geram um código local. Use a área <a href="#rastreio">Rastrear
+                                    pedido</a> para consultar o registro neste navegador.</p>
+                        </details>
+                        <details data-benefit-faq="payment">
+                            <summary>Posso pagar com cartão nesta loja?</summary>
+                            <p>Não. Esta demonstração não processa pagamentos nem solicita dados financeiros.</p>
+                        </details>
+                        <details data-benefit-faq="exchange">
+                            <summary>Como solicito uma troca ou devolução?</summary>
+                            <p>Selecione “Troca e devolução” no formulário e registre os detalhes. O protocolo é apenas
+                                local e não substitui o contato com uma loja real.</p>
+                        </details>
+                        <details data-benefit-faq="security">
+                            <summary>Esta demonstração processa compras ou guarda dados financeiros?</summary>
+                            <p>Não. A loja não processa pagamentos nem solicita dados de cartão ou senhas. Algumas
+                                preferências e registros de demonstração ficam salvos localmente neste navegador.</p>
+                        </details>
+                        <details>
+                            <summary>Alguém da equipe receberá minha mensagem?</summary>
+                            <p>Não. Sem um serviço de backend, a solicitação permanece salva somente neste navegador.
+                            </p>
+                        </details>
                     </div>
+                    <p id="supportFaqEmpty" class="support-empty" hidden>Nenhuma resposta encontrada. Tente outros
+                        termos ou registre uma solicitação.</p>
                 </div>
+            </div>
 
-                <div class="support-history">
-                    <h3>Protocolos neste navegador</h3>
-                    <div id="supportTicketList" class="support-ticket-list" aria-live="polite"></div>
-                </div>
-             </Section>
+            <div class="support-history">
+                <h3>Protocolos neste navegador</h3>
+                <div id="supportTicketList" class="support-ticket-list" aria-live="polite"></div>
+            </div>
+        </Section>
 
-             <!-- Atalhos para rastreio, informações de segurança/pagamento e formulário de trocas. -->
-             <section class="section benefits-section">
-                <div class="benefits">
-                    <button class="benefit" type="button" data-benefit="shipping">
-                        <span>🚚</span>
-                        <h3>Acompanhe seu pedido</h3>
-                        <p>Consulte os pedidos de demonstração registrados neste navegador.</p>
-                    </button>
-                    <button class="benefit" type="button" data-benefit="security">
-                        <span>🔒</span>
-                        <h3>Privacidade e segurança</h3>
-                        <p>Saiba quais dados são usados nesta demonstração.</p>
-                    </button>
-                    <button class="benefit" type="button" data-benefit="payment">
-                        <span>💳</span>
-                        <h3>Informações de pagamento</h3>
-                        <p>Veja o que é possível fazer com pagamentos neste protótipo.</p>
-                    </button>
-                    <button class="benefit" type="button" data-benefit="exchange">
-                        <span>↩️</span>
-                        <h3>Ajuda com trocas</h3>
-                        <p>Preencha uma solicitação local de troca ou devolução.</p>
-                    </button>
-                </div>
-             </section>
+        <!-- Atalhos para rastreio, informações de segurança/pagamento e formulário de trocas. -->
+        <section class="section benefits-section">
+            <div class="benefits">
+                <button class="benefit" type="button" data-benefit="shipping">
+                    <span>🚚</span>
+                    <h3>Acompanhe seu pedido</h3>
+                    <p>Consulte os pedidos de demonstração registrados neste navegador.</p>
+                </button>
+                <button class="benefit" type="button" data-benefit="security">
+                    <span>🔒</span>
+                    <h3>Privacidade e segurança</h3>
+                    <p>Saiba quais dados são usados nesta demonstração.</p>
+                </button>
+                <button class="benefit" type="button" data-benefit="payment">
+                    <span>💳</span>
+                    <h3>Informações de pagamento</h3>
+                    <p>Veja o que é possível fazer com pagamentos neste protótipo.</p>
+                </button>
+                <button class="benefit" type="button" data-benefit="exchange">
+                    <span>↩️</span>
+                    <h3>Ajuda com trocas</h3>
+                    <p>Preencha uma solicitação local de troca ou devolução.</p>
+                </button>
+            </div>
+        </section>
     </main>
 
     <!-- Rodapé da página -->
@@ -574,53 +583,53 @@
             <span>© 2026 New e-Commerce — Todos os direitos reservados.</span>
             <a href="#inicio">Voltar ao início</a>
         </div>
-</footer>
+    </footer>
 
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
 </body>
 
-    <!-- Scripts da página inicial: carrossel, navegação, tema e recursos do catálogo. -->
-    <script src="assets/js/storefront/carrossel.js"></script>
-    <script src="assets/js/shared/navbar.js"></script>
-    <script src="assets/js/shared/tema.js"></script>
-    <script src="assets/js/storefront/index.js"></script>
-    <script src="assets/js/shared/footer.js"></script>
+<!-- Scripts da página inicial: carrossel, navegação, tema e recursos do catálogo. -->
+<script src="assets/js/storefront/carrossel.js"></script>
+<script src="assets/js/shared/navbar.js"></script>
+<script src="assets/js/shared/tema.js"></script>
+<script src="assets/js/storefront/index.js"></script>
+<script src="assets/js/shared/footer.js"></script>
 
 </html>

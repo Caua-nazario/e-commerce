@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Vendedor - New e-Commerce</title>
+
+    <!-- Estilos compartilhados e estilo próprio do dashboard -->
+    <link rel="stylesheet" href="assets/css/shared/navbar.css">
+    <link rel="stylesheet" href="assets/css/shared/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Header dinâmico via JS -->
+    <header>
+        
+    </header>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Painel de Gestão do Vendedor</h1>
+            <button class="btn-primary" id="openModalBtn">+ Novo Produto</button>
+        </div>
+
+        <!-- Indicadores de desempenho -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>Produtos Cadastrados</h3>
+                <div class="value" id="totalProductsCount">0</div>
+            </div>
+            <div class="metric-card">
+                <h3>Vendas Realizadas</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="metric-card">
+                <h3>Faturamento Estimado</h3>
+                <div class="value">R$ 0,00</div>
+            </div>
+        </div>
+
+        <!-- Listagem de produtos do vendedor -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="vendorProductsTableBody">
+                    <!-- Conteúdo gerado via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Modal de cadastro de produto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <h2>Cadastrar Novo Produto</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="prodName">Nome do Produto</label>
+                    <input type="text" id="prodName" required placeholder="Ex: Smartphone XYZ">
+                </div>
+                <div class="form-group">
+                    <label for="prodCategory">Categoria</label>
+                    <input type="text" id="prodCategory" required placeholder="Ex: Celulares">
+                </div>
+                <div class="form-group">
+                    <label for="prodPrice">Preço (R$)</label>
+                    <input type="number" step="0.01" id="prodPrice" required placeholder="Ex: 1499.90">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="closeModalBtn">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts da aplicação -->
+    <script src="assets/js/shared/navbar.js"></script>
+    <script src="assets/js/shared/dashboard.js"></script>
+</body>
+
+</html>

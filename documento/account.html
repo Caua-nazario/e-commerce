@@ -206,57 +206,7 @@
     <script src="assets/js/pages/account.js"></script>
     <script src="assets/js/shared/navbar.js"></script>
     <script src="assets/js/shared/tema.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const card = document.querySelector(".login-card");
-            const tabsContainer = document.querySelector(".auth-tabs");
-            const tabBtns = document.querySelectorAll(".tab-btn");
-            const nameGroup = document.getElementById("name-group");
-            const roleGroup = document.getElementById("role-group");
-            const confirmPasswordGroup = document.getElementById("password-confirm-group");
-            const confirmInput = document.getElementById("confirmar-senha");
-            const submitBtn = document.getElementById("submit-btn");
 
-            if (card) {
-                card.addEventListener("mousemove", (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    card.style.setProperty("--mouse-x", `${x}px`);
-                    card.style.setProperty("--mouse-y", `${y}px`);
-                });
-            }
-
-            tabBtns.forEach((btn, index) => {
-                btn.addEventListener("click", () => {
-                    tabBtns.forEach(b => {
-                        b.classList.remove("active");
-                        b.setAttribute("aria-selected", "false");
-                    });
-
-                    btn.classList.add("active");
-                    btn.setAttribute("aria-selected", "true");
-
-                    tabsContainer.setAttribute("data-active", index);
-
-                    if (index === 0) {
-                        if (nameGroup) nameGroup.style.display = "none";
-                        if (roleGroup) roleGroup.style.display = "none";
-                        if (confirmPasswordGroup) confirmPasswordGroup.style.display = "none";
-                        if (confirmInput) confirmInput.disabled = true;
-                        if (submitBtn) submitBtn.textContent = "Entrar";
-                    } else {
-                        if (nameGroup) nameGroup.style.display = "block";
-                        if (roleGroup) roleGroup.style.display = "block";
-                        if (confirmPasswordGroup) confirmPasswordGroup.style.display = "block";
-                        if (confirmInput) confirmInput.disabled = false;
-                        if (submitBtn) submitBtn.textContent = "Criar Conta";
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

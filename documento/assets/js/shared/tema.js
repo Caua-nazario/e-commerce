@@ -1,13 +1,6 @@
-/**
- * Restaura e salva a preferência de tema claro ou escuro escolhida no navegador.
- */
-const temaToggle = document.getElementById("tema-toggle");
-
-/**
- * Restaura o tema escolhido e sincroniza o controle quando a página oferece
- * o botão de alternância.
- */
 function initializeTheme() {
+    const temaToggle = document.getElementById("tema-toggle");
+    
     const savedTheme = localStorage.getItem("tema");
     const isDarkTheme = savedTheme === "escuro";
 
@@ -15,12 +8,37 @@ function initializeTheme() {
 
     if (temaToggle) {
         temaToggle.checked = isDarkTheme;
-        temaToggle.addEventListener("change", () => {
-            const nextTheme = temaToggle.checked ? "escuro" : "claro";
-            document.body.classList.toggle("modo-escuro", temaToggle.checked);
+        
+        const newToggle = temaToggle.cloneNode(true);
+        temaToggle.parentNode.replaceChild(newToggle, temaToggle);
+
+        newToggle.addEventListener("change", () => {
+            const nextTheme = newToggle.checked ? "escuro" : "claro";
+            document.body.classList.toggle("modo-escuro", newToggle.checked);
             localStorage.setItem("tema", nextTheme);
         });
     }
 }
 
-initializeTheme();
+document.addEventListener("DOMContentLoaded", () => {
+    const navbarPlaceholder = document.getElementById("navbar-placeholder");
+
+    if (navbarPlaceholder) {
+        fetch("navbar.html")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao carregar a navbar.");
+                }
+                return response.text();
+            })
+            .then(data => {
+                navbarPlaceholder.innerHTML = data;
+                initializeTheme();
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+    } else {
+        initializeTheme();
+    }
+});

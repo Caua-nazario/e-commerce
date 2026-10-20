@@ -1,251 +1,196 @@
 /**
- * Envia cadastro e login à API, que valida os dados, deriva a senha e mantém
- * a sessão no PostgreSQL. Nenhuma senha é salva no navegador.
+ * Gerencia a autenticação, abas de login/cadastro, animação do indicador e interações da página.
  */
-const tabs = document.querySelectorAll(".tab-btn");
-const nameGroup = document.getElementById("name-group");
-const nameInput = document.getElementById("nome");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("senha");
-const passwordConfirmationGroup = document.getElementById("password-confirm-group");
-const passwordConfirmationInput = document.getElementById("confirmar-senha");
-const submitButton = document.getElementById("submit-btn");
-const forgotLink = document.getElementById("forgot-link");
-const indicator = document.querySelector(".tab-indicator");
-const form = document.getElementById("auth-form");
-const authMessage = document.getElementById("authMessage");
-let activeAuthMode = "login";
-let csrfToken = "";
+document.addEventListener("DOMContentLoaded", () => {
+    const tabsContainer = document.querySelector(".auth-tabs");
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const nameGroup = document.getElementById("name-group");
+    const roleGroup = document.getElementById("role-group");
+    const nameInput = document.getElementById("nome");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("senha");
+    const passwordConfirmationGroup = document.getElementById("password-confirm-group");
+    const passwordConfirmationInput = document.getElementById("confirmar-senha");
+    const submitButton = document.getElementById("submit-btn");
+    const forgotLink = document.getElementById("forgot-link");
+    const form = document.getElementById("auth-form");
+    const authMessage = document.getElementById("authMessage");
+    const card = document.querySelector(".login-card");
 
-/**
- * Exibe o resultado acessível de uma ação de conta.
- */
-function showAuthMessage(message) {
-    if (authMessage) {
-        authMessage.textContent = message;
-    }
-}
+    let activeAuthMode = "login"; // "login" ou "register"
+    const USERS_STORAGE_KEY = "new-ecommerce-users";
+    const LOGGED_STORAGE_KEY = "logged_user";
 
-/**
- * Faz uma requisição de mesma origem e mantém o token CSRF da sessão.
- */
-async function requestAuthApi(path, { method = "GET", body } = {}) {
-    const headers = {
-        Accept: "application/json"
-    };
-
-    if (body !== undefined) {
-        headers["Content-Type"] = "application/json";
+    /**
+     * Exibe mensagens de feedback para o utilizador.
+     */
+    function showAuthMessage(message) {
+        if (authMessage) {
+            authMessage.textContent = message;
+        }
     }
 
-    if (method !== "GET") {
-        if (!csrfToken) {
-            const csrfResponse = await fetch("/api/auth/csrf", {
-                credentials: "same-origin",
-                cache: "no-store"
-            });
-            const csrfResult = await csrfResponse.json();
+    /**
+     * Efeito visual de luz no card seguindo o rato.
+     */
+    if (card) {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-            if (!csrfResponse.ok) {
-                throw new Error(csrfResult.error ?? "Não foi possível iniciar uma sessão segura.");
-            }
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+        });
+    }
 
-            csrfToken = csrfResult.csrfToken;
+    /**
+     * Alterna entre as abas de Login e Criar Conta com animação fluida.
+     */
+    function switchTab(mode, clickedBtn, index) {
+        activeAuthMode = mode;
+
+        // Atualiza classes ativas das abas
+        tabBtns.forEach(b => {
+            b.classList.remove("active");
+            b.setAttribute("aria-selected", "false");
+        });
+
+        if (clickedBtn) {
+            clickedBtn.classList.add("active");
+            clickedBtn.setAttribute("aria-selected", "true");
         }
 
-        headers["X-CSRF-Token"] = csrfToken;
-    }
-
-    const response = await fetch(path, {
-        method,
-        headers,
-        credentials: "same-origin",
-        cache: "no-store",
-        body: body === undefined ? undefined : JSON.stringify(body)
-    });
-    const result = response.status === 204 ? {} : await response.json();
-
-    if (!response.ok) {
-        if (response.status === 403) {
-            csrfToken = "";
+        // Move o indicador deslizante através do atributo data-active
+        if (tabsContainer) {
+            tabsContainer.setAttribute("data-active", index);
         }
 
-        throw new Error(result.error ?? "Não foi possível concluir a solicitação.");
-    }
+        const isRegistration = mode === "register";
 
-    if (result.csrfToken) {
-        csrfToken = result.csrfToken;
-    }
+        // Exibe ou oculta os campos específicos de cadastro
+        if (nameGroup) nameGroup.style.display = isRegistration ? "block" : "none";
+        if (roleGroup) roleGroup.style.display = isRegistration ? "block" : "none";
+        if (passwordConfirmationGroup) passwordConfirmationGroup.style.display = isRegistration ? "block" : "none";
 
-    return result;
-}
-
-/**
- * Exibe os dados públicos da conta autenticada e permite encerrar a sessão.
- */
-function updateAccountSession(user) {
-    document.getElementById("server-logout")?.remove();
-
-    if (!user || !authMessage) {
-        return;
-    }
-
-    const logoutButton = document.createElement("button");
-    logoutButton.id = "server-logout";
-    logoutButton.className = "btn-google";
-    logoutButton.type = "button";
-    logoutButton.textContent = "Sair da conta";
-    logoutButton.addEventListener("click", async () => {
-        logoutButton.disabled = true;
-
-        try {
-            await requestAuthApi("/api/auth/logout", { method: "POST", body: {} });
-            csrfToken = "";
-            logoutButton.remove();
-            showAuthMessage("Você saiu da sua conta.");
-        } catch (error) {
-            console.error("Não foi possível encerrar a sessão no servidor.", error);
-            showAuthMessage(error.message);
-            logoutButton.disabled = false;
+        if (nameInput) {
+            nameInput.required = isRegistration;
+            if (!isRegistration) nameInput.value = "";
         }
-    });
-
-    authMessage.insertAdjacentElement("afterend", logoutButton);
-    showAuthMessage(`Olá, ${user.name}. Sua sessão está ativa neste navegador.`);
-}
-
-/**
- * Restaura a sessão mantida pelo servidor ao abrir a página de conta.
- */
-async function restoreAccountSession() {
-    try {
-        const { user } = await requestAuthApi("/api/auth/me");
-
-        if (user) {
-            updateAccountSession(user);
-        }
-    } catch (error) {
-        console.error("Não foi possível consultar a sessão no servidor.", error);
-        showAuthMessage(error.message);
-    }
-}
-
-/**
- * Alterna os campos e regras do formulário entre login e criação de conta.
- */
-function switchTab(type, clickedButton) {
-    activeAuthMode = type;
-    tabs.forEach((tab) => {
-        const isActive = tab === clickedButton;
-        tab.classList.toggle("active", isActive);
-        tab.setAttribute("aria-selected", String(isActive));
-    });
-
-    const isRegistration = type === "register";
-    nameGroup?.classList.toggle("aberto", isRegistration);
-    passwordConfirmationGroup?.classList.toggle("aberto", isRegistration);
-
-    if (nameInput) {
-        nameInput.required = isRegistration;
-        nameInput.autocomplete = isRegistration ? "name" : "off";
-    }
-
-    if (passwordInput) {
-        passwordInput.autocomplete = isRegistration ? "new-password" : "current-password";
-        passwordInput.minLength = isRegistration ? 10 : 1;
-    }
-
-    if (passwordConfirmationInput) {
-        passwordConfirmationInput.required = isRegistration;
-        passwordConfirmationInput.minLength = isRegistration ? 10 : 0;
-        passwordConfirmationInput.disabled = !isRegistration;
-    }
-
-    if (submitButton) {
-        submitButton.textContent = isRegistration ? "Criar minha conta" : "Entrar";
-    }
-
-    forgotLink?.classList.toggle("oculto", isRegistration);
-    indicator?.classList.toggle("direita", isRegistration);
-    showAuthMessage("");
-}
-
-/**
- * Valida localmente a confirmação e envia apenas os campos necessários à API.
- */
-async function handleAuthSubmit(event) {
-    event.preventDefault();
-
-    if (!form?.reportValidity()) {
-        return;
-    }
-
-    if (
-        activeAuthMode === "register"
-        && passwordInput?.value !== passwordConfirmationInput?.value
-    ) {
-        showAuthMessage("As senhas informadas não são iguais.");
-        passwordConfirmationInput?.focus();
-        return;
-    }
-
-    submitButton.disabled = true;
-
-    try {
-        const isRegistration = activeAuthMode === "register";
-        const payload = {
-            email: emailInput?.value.trim() ?? "",
-            password: passwordInput?.value ?? ""
-        };
-
-        if (isRegistration) {
-            payload.name = nameInput?.value.trim() ?? "";
-            payload.passwordConfirmation = passwordConfirmationInput?.value ?? "";
-        }
-
-        const result = await requestAuthApi(
-            isRegistration ? "/api/auth/register" : "/api/auth/login",
-            { method: "POST", body: payload }
-        );
-
-        passwordInput.value = "";
 
         if (passwordConfirmationInput) {
-            passwordConfirmationInput.value = "";
+            passwordConfirmationInput.required = isRegistration;
+            passwordConfirmationInput.disabled = !isRegistration;
+            if (!isRegistration) passwordConfirmationInput.value = "";
         }
 
-        emailInput.value = result.user.email;
-        updateAccountSession(result.user);
-
-        if (result.message) {
-            showAuthMessage(`${result.message} Olá, ${result.user.name}.`);
+        if (submitButton) {
+            submitButton.textContent = isRegistration ? "Criar Conta" : "Entrar";
         }
-    } catch (error) {
-        console.error("Não foi possível concluir a operação de conta.", error);
-        showAuthMessage(error.message);
-    } finally {
-        submitButton.disabled = false;
+
+        if (forgotLink) {
+            forgotLink.style.display = isRegistration ? "none" : "block";
+        }
+
+        showAuthMessage("");
     }
-}
 
-/**
- * Informa que os provedores externos de login e recuperação ainda não estão configurados.
- */
-function showUnavailableAccountIntegration(event) {
-    event.preventDefault();
-    showAuthMessage("Login com Google e recuperação por e-mail ainda precisam de integrações externas.");
-}
+    // Configura o evento de clique em cada aba (0 = Login, 1 = Criar Conta)
+    tabBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            const mode = index === 0 ? "login" : "register";
+            switchTab(mode, btn, index);
+        });
+    });
 
-/**
- * Liga as abas e formulários e consulta uma sessão existente no servidor.
- */
-function initializeAccountPage() {
-    tabs[0]?.addEventListener("click", () => switchTab("login", tabs[0]));
-    tabs[1]?.addEventListener("click", () => switchTab("register", tabs[1]));
-    form?.addEventListener("submit", handleAuthSubmit);
-    document.getElementById("btn-google")?.addEventListener("click", showUnavailableAccountIntegration);
-    forgotLink?.addEventListener("click", showUnavailableAccountIntegration);
-    restoreAccountSession();
-}
+    /**
+     * Processa a autenticação utilizando LocalStorage para teste imediato.
+     */
+    form?.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-initializeAccountPage();
+        const email = emailInput?.value.trim() ?? "";
+        const senha = passwordInput?.value ?? "";
+
+        if (!email || !senha) {
+            showAuthMessage("Preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem(USERS_STORAGE_KEY)) || [];
+
+        if (activeAuthMode === "register") {
+            const nome = nameInput?.value.trim() ?? "";
+            const confirmSenha = passwordConfirmationInput?.value ?? "";
+            const selectedRoleInput = document.querySelector('input[name="userRole"]:checked');
+            const role = selectedRoleInput ? selectedRoleInput.value : "client";
+
+            if (!nome) {
+                showAuthMessage("Por favor, preencha o seu nome completo.");
+                nameInput?.focus();
+                return;
+            }
+
+            if (senha !== confirmSenha) {
+                showAuthMessage("As senhas informadas não coincidem.");
+                passwordConfirmationInput?.focus();
+                return;
+            }
+
+            const existingUser = users.find(u => u.email === email);
+            if (existingUser) {
+                showAuthMessage("Este e-mail já está cadastrado. Faça login.");
+                return;
+            }
+
+            // Regista novo utilizador
+            const newUser = { nome, email, senha, role };
+            users.push(newUser);
+            localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+
+            // Guarda a sessão ativa
+            localStorage.setItem(LOGGED_STORAGE_KEY, JSON.stringify({ nome, email, role }));
+
+            showAuthMessage("Conta criada com sucesso! Redirecionando...");
+            
+            setTimeout(() => {
+                if (role === "vendor") {
+                    window.location.href = "dashboard.html";
+                } else {
+                    window.location.href = "index.html";
+                }
+            }, 1000);
+
+        } else {
+            // Fluxo de Login
+            const foundUser = users.find(u => u.email === email && u.senha === senha);
+
+            if (!foundUser) {
+                showAuthMessage("E-mail ou senha incorretos.");
+                return;
+            }
+
+            const role = foundUser.role || "client";
+
+            // Guarda a sessão ativa
+            localStorage.setItem(LOGGED_STORAGE_KEY, JSON.stringify({
+                nome: foundUser.nome,
+                email: foundUser.email,
+                role: role
+            }));
+
+            showAuthMessage(`Bem-vindo de volta, ${foundUser.nome}!`);
+
+            setTimeout(() => {
+                if (role === "vendor") {
+                    window.location.href = "dashboard.html";
+                } else {
+                    window.location.href = "index.html";
+                }
+            }, 1000);
+        }
+    });
+
+    // Estado inicial padrão (Aba Login ativa)
+    switchTab("login", tabBtns[0], 0);
+});
